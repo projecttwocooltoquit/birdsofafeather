@@ -1,7 +1,35 @@
 import "./App.css";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+const client = new ApolloClient({
+  uri: "/graphql",
+  cache: new InMemoryCache(),
+});
 
 function App() {
-  return <div>hello bird nerds</div>;
+  return (
+    <ApolloProvider client={client}>
+      {/* Wrap page elements in Router component to keep track of location state */}
+      <Router>
+        <div>
+          <Header />
+          <div>
+            {/* Define routes to render different page components at different paths */}
+            <Route exact path="/" component={Home} />
+            {/* Define a route that will take in variable data */}
+            <Route exact path="/profiles/:profileId" component={Profile} />
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App;
