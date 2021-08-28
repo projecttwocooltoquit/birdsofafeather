@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# mothershipsquadgoals
+Built by Team Mothership Squad Goals
+(K-Leigh Marbury, Emily Rendleman, Brandon Akers, Chris Van Etten)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple web application that allows users to view birds and keep track of birds that they wish to see. A few screenshots of the website can be found below: 
 
-## Available Scripts
 
-In the project directory, you can run:
+# Technologies Used
 
-### `npm start`
+    - HTML
+    - CSS
+    - Javascript
+    - Mongo 
+    - Node.js
+    - React
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Description
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This browser application allows a user to discover birds in their area via the power of google maps! Users can input (using drop down menus) their location and view the map displayed on the right to find the beautiful birds they can spot in their area. Should the user chose to create a profile, they can save keep track of the birds they have viewed and note birds that they wish to view. 
 
-### `npm test`
+Upon accessing the web application, the user is taken to the homescreen. If they are a first time user, they can chose to sign up by clicking on the corresponding Log In button on the nav bar. (Include more as we continue ironing this out)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Setup/Installation Requirements
 
-### `npm run build`
+The application can be accessed at https://birdsofafeather.herokuapp.com/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# License
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Copyright (c) 2021 Mothership Squad Goals
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Contact Information
 
-### `npm run eject`
+K-Leigh Marbury at laetaiustus@gmail.com
+github: https://github.com/KristaMarbury
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Brandon Akers at brandonakers729@gmail.com
+github: https://github.com/codeb-a
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Chris Van Etten at christophervanetten@gmail.com
+github: https://github.com/MistahV
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Emily Rendleman at emilyrendleman@gmail.com
+github: https://github.com/emrendle
