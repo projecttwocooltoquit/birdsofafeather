@@ -212,9 +212,8 @@ const Home = () => {
     },
   ];
 
-  let counties = [];
-
   // sets a state for the user's state choice
+  const [counties, setCounties] = useState([]);
   const [userStateChoice, setUserStateChoice] = useState("");
   const [userCountyChoice, setUserCountyChoice] = useState("");
 
@@ -229,8 +228,6 @@ const Home = () => {
 
   // need useeffect to listen to the state change of the userstatechoice - when it changes, fetch the counties?? need to wrap the api call in useeffect?
   useEffect(() => {
-    counties = [];
-
     let myHeaders = new Headers();
     myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
 
@@ -248,14 +245,13 @@ const Home = () => {
       })
       .then((data) => {
         data.forEach((county) => {
-          counties.push(county);
+          setCounties(data);
         });
-        console.log(counties);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [userStateChoice, counties]);
+  }, [userStateChoice]);
 
   return (
     <main className="container">
