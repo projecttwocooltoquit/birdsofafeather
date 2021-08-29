@@ -1,0 +1,18 @@
+import React from "react";
+
+const Card = (props) => {
+  return (
+    <div className="card" style={{ width: "18 rem" }}>
+      <img className="card-img-top" src="..." alt="Card image cap" />
+      <div className="card-body">
+        <h5 className="card-title">{props.name}</h5>
+        <p className="card-text">{props.textContent}</p>
+        <a href="#" className="btn btn-primary">
+          Go somewhere
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
