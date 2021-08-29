@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Home = () => {
   const states = [
@@ -212,40 +212,52 @@ const Home = () => {
     },
   ];
 
+  let counties = [];
+
+  // sets a state for the user's state choice
+  const [userStateChoice, setUserStateChoice] = useState("");
+
+  const handleUserStateChoice = (e) => {
+    // grabs the value from the option selected from the onchange event - need to pass this into the ebird API to get county codes, push those codes into counties array then map through them to create options for the county dropdown!
+    setUserStateChoice(e.target.value);
+  };
+
+  // need useeffect to listen to the state change of the userstatechoice - when it changes, fetch the counties?? need to wrap the api call in useeffect?
+
   return (
-    <main class="container">
-      <div class="row">
-        <section class="col-6 col-md-4 d-flex flex-column mt-2">
-          <p class="lead">
+    <main className="container">
+      <div className="row">
+        <section className="col-6 col-md-4 d-flex flex-column mt-2">
+          <p className="lead">
             This is a lead paragraph. It stands out from regular paragraphs.
           </p>
-          <div class="container d-flex">
+          <div className="container d-flex">
             <select
               id="state-dropdwn"
-              class="form-select m-2"
-              aria-label="Default select example"
-              onchange="getUserInputState()"
+              className="form-select m-2"
+              value={userStateChoice}
+              onChange={handleUserStateChoice}
             >
-              <option selected>Select a state</option>
+              <option defaultValue={userStateChoice}>Select a state</option>
               {states.map((state) => (
-                <option key={state.abbreviation} value={state.name}>
+                <option key={state.abbreviation} value={state.abbreviation}>
                   {state.name}
                 </option>
               ))}
             </select>
             <select
               id="county-dropdwn"
-              class="form-select m-2"
+              className="form-select m-2"
               aria-label="Default select example"
             >
-              <option selected>Select a county</option>
+              <option defaultValue>Select a county</option>
             </select>
-            <button id="go-btn" type="button" class="btn btn-dark">
+            <button id="go-btn" type="button" className="btn btn-dark">
               Go
             </button>
           </div>
         </section>
-        <section class="col-md-8 mt-2">
+        <section className="col-md-8 mt-2">
           <div id="map"></div>
         </section>
       </div>
