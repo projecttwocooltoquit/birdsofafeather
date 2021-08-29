@@ -216,13 +216,46 @@ const Home = () => {
 
   // sets a state for the user's state choice
   const [userStateChoice, setUserStateChoice] = useState("");
+  const [userCountyChoice, setUserCountyChoice] = useState("");
 
   const handleUserStateChoice = (e) => {
     // grabs the value from the option selected from the onchange event - need to pass this into the ebird API to get county codes, push those codes into counties array then map through them to create options for the county dropdown!
     setUserStateChoice(e.target.value);
   };
 
+  const handleUserCountyChoice = (e) => {
+    console.log("you picked a county! good job!");
+  };
+
   // need useeffect to listen to the state change of the userstatechoice - when it changes, fetch the counties?? need to wrap the api call in useeffect?
+  useEffect(() => {
+    counties = [];
+
+    let myHeaders = new Headers();
+    myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
+
+    let requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    fetch(
+      `https://api.ebird.org/v2/ref/region/list/subnational2/US-${userStateChoice}`,
+      requestOptions
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        data.forEach((county) => {
+          counties.push(county);
+        });
+        console.log(counties);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [userStateChoice, counties]);
 
   return (
     <main className="container">
@@ -248,9 +281,15 @@ const Home = () => {
             <select
               id="county-dropdwn"
               className="form-select m-2"
-              aria-label="Default select example"
+              value={userCountyChoice}
+              onChange={handleUserCountyChoice}
             >
-              <option defaultValue>Select a county</option>
+              <option defaultValue={userCountyChoice}>Select a county</option>
+              {counties.map((county) => (
+                <option key={county.code} value={county.name}>
+                  {county.name}
+                </option>
+              ))}
             </select>
             <button id="go-btn" type="button" className="btn btn-dark">
               Go
