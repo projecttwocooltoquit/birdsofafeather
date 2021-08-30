@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Card from "../components/Card";
 
 const Home = () => {
   const states = [
@@ -212,21 +213,23 @@ const Home = () => {
     },
   ];
 
-  // sets a state for the user's state choice
+  // states that listen to user's choices
   const [counties, setCounties] = useState([]);
   const [userStateChoice, setUserStateChoice] = useState("");
   const [userCountyChoice, setUserCountyChoice] = useState("");
+  const [locationBirds, setLocationBirds] = useState([]);
 
   const handleUserStateChoice = (e) => {
-    // grabs the value from the option selected from the onchange event - need to pass this into the ebird API to get county codes, push those codes into counties array then map through them to create options for the county dropdown!
+    // grabs the value from the user selected state option
     setUserStateChoice(e.target.value);
   };
 
   const handleUserCountyChoice = (e) => {
-    console.log("you picked a county! good job!");
+    setUserCountyChoice(e.target.value);
   };
 
-  // need useeffect to listen to the state change of the userstatechoice - when it changes, fetch the counties?? need to wrap the api call in useeffect?
+  // useEffect listens to user's state choice and makes an api call using the state info to generate a list of counties
+  // sets the county state which is then used to populate the county choices dropdown
   useEffect(() => {
     let myHeaders = new Headers();
     myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
@@ -252,6 +255,33 @@ const Home = () => {
         console.error(error);
       });
   }, [userStateChoice]);
+
+  // listens for user's county choice, makes ebird api call to find birds at that location
+  useEffect(() => {
+    let myHeaders = new Headers();
+    myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
+
+    let requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(
+      `https://api.ebird.org/v2/data/obs/${userCountyChoice}/recent?maxResults=5`,
+      requestOptions
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setLocationBirds(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, [userCountyChoice]);
 
   return (
     <main className="container">
@@ -282,7 +312,7 @@ const Home = () => {
             >
               <option defaultValue={userCountyChoice}>Select a county</option>
               {counties.map((county) => (
-                <option key={county.code} value={county.name}>
+                <option key={county.code} value={county.code}>
                   {county.name}
                 </option>
               ))}
@@ -295,6 +325,11 @@ const Home = () => {
         <section className="col-md-8 mt-2">
           <div id="map"></div>
         </section>
+      </div>
+      <div>
+        {locationBirds.map((bird) => (
+          <Card sciName={bird.sciName} comName={bird.comName} />
+        ))}
       </div>
     </main>
   );
