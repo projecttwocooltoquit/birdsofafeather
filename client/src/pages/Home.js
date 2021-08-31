@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
+import MapContainer from "../components/MapContainer";
+import Marker from "google-maps-react";
 
 const Home = () => {
   const states = [
@@ -276,7 +278,6 @@ const Home = () => {
       })
       .then((data) => {
         setLocationBirds(data);
-        console.log(data);
       })
       .catch((error) => {
         console.error(error);
@@ -323,7 +324,7 @@ const Home = () => {
           </div>
         </section>
         <section className="col-md-8 mt-2">
-          <div id="map"></div>
+          <MapContainer locations={locationBirds}></MapContainer>
         </section>
       </div>
       <div>
