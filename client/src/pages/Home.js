@@ -324,7 +324,10 @@ const Home = () => {
           </div>
         </section>
         <section className="col-md-8 mt-2">
-          <MapContainer locations={locationBirds}></MapContainer>
+          <MapContainer
+            locations={locationBirds}
+            center={locationBirds[1]}
+          ></MapContainer>
         </section>
       </div>
       <div>
