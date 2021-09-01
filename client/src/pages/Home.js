@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Card from "../components/Card";
 import MapContainer from "../components/MapContainer";
-import Marker from "google-maps-react";
 
 const Home = () => {
   const states = [
@@ -230,59 +229,72 @@ const Home = () => {
     setUserCountyChoice(e.target.value);
   };
 
+  const isInitialMount = useRef(true);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      // Your useEffect code here to be run on update
+      let myHeaders = new Headers();
+      myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
+
+      let requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+
+      fetch(
+        `https://api.ebird.org/v2/data/obs/${userCountyChoice}/recent?maxResults=5`,
+        requestOptions
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setLocationBirds(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [userCountyChoice]);
+
   // useEffect listens to user's state choice and makes an api call using the state info to generate a list of counties
   // sets the county state which is then used to populate the county choices dropdown
   useEffect(() => {
-    let myHeaders = new Headers();
-    myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
+      let myHeaders = new Headers();
+      myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
 
-    let requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-    fetch(
-      `https://api.ebird.org/v2/ref/region/list/subnational2/US-${userStateChoice}`,
-      requestOptions
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        data.forEach((county) => {
-          setCounties(data);
+      let requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+      fetch(
+        `https://api.ebird.org/v2/ref/region/list/subnational2/US-${userStateChoice}`,
+        requestOptions
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          data.forEach((county) => {
+            setCounties(data);
+          });
+        })
+        .catch((error) => {
+          console.error(error);
         });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    }
   }, [userStateChoice]);
 
   // listens for user's county choice, makes ebird api call to find birds at that location
-  useEffect(() => {
-    let myHeaders = new Headers();
-    myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
-
-    let requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-
-    fetch(
-      `https://api.ebird.org/v2/data/obs/${userCountyChoice}/recent?maxResults=5`,
-      requestOptions
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setLocationBirds(data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [userCountyChoice]);
+  // useEffect(() => {}, [userCountyChoice]);
 
   return (
     <main className="container">
@@ -331,8 +343,8 @@ const Home = () => {
         </section>
       </div>
       <div>
-        {locationBirds.map((bird) => (
-          <Card sciName={bird.sciName} comName={bird.comName} />
+        {locationBirds.map((bird, index) => (
+          <Card key={index} sciName={bird.sciName} comName={bird.comName} />
         ))}
       </div>
     </main>

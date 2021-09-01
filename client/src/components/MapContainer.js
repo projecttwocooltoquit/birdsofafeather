@@ -8,12 +8,12 @@ const MapContainer = (props) => {
   };
 
   // state to contain coordinates to center the map
-  const [coordinates, setCoordinates] = useState([10, 10]);
+  const [coordinates, setCoordinates] = useState({ lat: 10, lng: 10 });
 
   // listens for changes in props, sets the coordinates of the center to whatever the center coordinate that is passed into the component
   useEffect(() => {
     if (props.center) {
-      setCoordinates(props.center);
+      setCoordinates({ lat: props.center.lat, lng: props.center.lng });
     }
   }, [props.center]);
 
@@ -26,8 +26,11 @@ const MapContainer = (props) => {
         style={mapStyles}
         center={coordinates}
       >
-        {props.locations.map((location) => (
-          <Marker position={{ lat: location.lat, lng: location.lng }} />
+        {props.locations.map((location, index) => (
+          <Marker
+            key={index}
+            position={{ lat: location.lat, lng: location.lng }}
+          />
         ))}
       </Map>
     );
