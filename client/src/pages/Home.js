@@ -1,6 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
 import MapContainer from "../components/MapContainer";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
+const API_KEY = process.env.REACT_APP_EBIRD_API_KEY;
 
 const Home = () => {
   const states = [
@@ -213,6 +217,23 @@ const Home = () => {
       abbreviation: "WY",
     },
   ];
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+      slidesToSlide: 3, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
 
   // states that listen to user's choices
   const [counties, setCounties] = useState([]);
@@ -229,15 +250,11 @@ const Home = () => {
     setUserCountyChoice(e.target.value);
   };
 
-  const isInitialMount = useRef(true);
-
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
+    if (!!userCountyChoice) {
       // Your useEffect code here to be run on update
       let myHeaders = new Headers();
-      myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
+      myHeaders.append("X-eBirdApiToken", API_KEY);
 
       let requestOptions = {
         method: "GET",
@@ -264,11 +281,9 @@ const Home = () => {
   // useEffect listens to user's state choice and makes an api call using the state info to generate a list of counties
   // sets the county state which is then used to populate the county choices dropdown
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-    } else {
+    if (!!userStateChoice) {
       let myHeaders = new Headers();
-      myHeaders.append("X-eBirdApiToken", "6fh7ke4gee7v");
+      myHeaders.append("X-eBirdApiToken", API_KEY);
 
       let requestOptions = {
         method: "GET",
@@ -283,9 +298,7 @@ const Home = () => {
           return response.json();
         })
         .then((data) => {
-          data.forEach((county) => {
-            setCounties(data);
-          });
+          setCounties(data);
         })
         .catch((error) => {
           console.error(error);
@@ -340,12 +353,27 @@ const Home = () => {
             locations={locationBirds}
             center={locationBirds[1]}
           ></MapContainer>
+          <Carousel
+            swipeable={false}
+            draggable={false}
+            showDots={true}
+            responsive={responsive}
+            ssr={true} // means to render carousel on server-side.
+            infinite={true}
+            autoPlaySpeed={1000}
+            keyBoardControl={true}
+            customTransition="all .5"
+            transitionDuration={500}
+            containerClass="carousel-container"
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            dotListClass="custom-dot-list-style"
+            itemClass="carousel-item-padding-40-px"
+          >
+            {locationBirds.map((bird, index) => (
+              <Card key={index} sciName={bird.sciName} comName={bird.comName} />
+            ))}
+          </Carousel>
         </section>
-      </div>
-      <div>
-        {locationBirds.map((bird, index) => (
-          <Card key={index} sciName={bird.sciName} comName={bird.comName} />
-        ))}
       </div>
     </main>
   );
