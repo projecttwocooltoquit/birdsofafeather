@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+// import { ApolloProvider, useMutation } from "@apollo/client";
 
 const API_KEY = process.env.REACT_APP_EBIRD_API_KEY;
 
@@ -296,6 +297,9 @@ const Home = () => {
       )
         .then((response) => {
           return response.json();
+        })
+        .catch((error) => {
+          console.error(error);
         })
         .then((data) => {
           setCounties(data);
