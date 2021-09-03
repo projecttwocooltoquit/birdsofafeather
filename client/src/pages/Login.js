@@ -43,7 +43,7 @@ const Login = (props) => {
     <main className="flex-row justify-center mb-4">
       <div className="loginContainer">
         <div className="card">
-          <h4 className="card-header loginHeader">Login</h4>
+          <h2 className="card-header loginHeader">Login</h2>
           <div className="card-body">
             {data ? (
               <p>
@@ -52,29 +52,35 @@ const Login = (props) => {
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input inputExtra"
-                  placeholder="Your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input inputExtra"
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
+                <div className="flex-row space-between my-2">
+                  <label className="labelExtra" htmlFor="email">Email:</label>
+                  <input
+                      className="form-input inputExtra"
+                      placeholder="Your email"
+                      name="email"
+                      type="email"
+                      value={formState.email}
+                      onChange={handleChange}
+                  />
+                </div>
+                <div className="flex-row space-between my-2"> 
+                  <label className="labelExtra" htmlFor="pwd">Password:</label>
+                  <input
+                      className="form-input inputExtra"
+                      placeholder="******"
+                      name="password"
+                      type="password"
+                      value={formState.password}
+                      onChange={handleChange}
+                  />
+                  <button
                   className="loginButton btn-block"
                   style={{ cursor: "pointer" }}
                   type="submit"
-                >
+                  >
                   Submit
-                </button>
+                  </button>
+                </div>
               </form>
             )}
 
