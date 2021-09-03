@@ -1,4 +1,5 @@
 //change profiles
-const Profile = require('./Profile');
+const Profile = require("./Profile");
+const Birds = require("./Birds");
 
-module.exports = { Profile };
+module.exports = { Profile, Birds };

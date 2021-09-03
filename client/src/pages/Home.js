@@ -3,12 +3,15 @@ import Card from "../components/Card";
 import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+
 import forest from "./images/forest.mp4";
+
 // import { ApolloProvider, useMutation } from "@apollo/client";
 
 const API_KEY = process.env.REACT_APP_EBIRD_API_KEY;
 
 const Home = () => {
+
   const states = [
     {
       name: "Alabama",
@@ -311,9 +314,6 @@ const Home = () => {
     }
   }, [userStateChoice]);
 
-  // listens for user's county choice, makes ebird api call to find birds at that location
-  // useEffect(() => {}, [userCountyChoice]);
-
   return (
     <main>
       <video id="videobg" autoPlay loop muted>
@@ -361,26 +361,9 @@ const Home = () => {
             locations={locationBirds}
             center={locationBirds[1]}
           ></MapContainer>
-          <Carousel
-            swipeable={false}
-            draggable={false}
-            showDots={true}
-            responsive={responsive}
-            ssr={true} // means to render carousel on server-side.
-            infinite={true}
-            autoPlaySpeed={1000}
-            keyBoardControl={true}
-            customTransition="all .5"
-            transitionDuration={500}
-            containerClass="carousel-container"
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            dotListClass="custom-dot-list-style"
-            itemClass="carousel-item-padding-40-px"
-          >
-            {locationBirds.map((bird, index) => (
-              <Card key={index} sciName={bird.sciName} comName={bird.comName} />
-            ))}
-          </Carousel>
+          {locationBirds.map((bird, index) => (
+            <Card key={index} sciName={bird.sciName} comName={bird.comName} />
+          ))}
         </section>
       </div>
     </main>

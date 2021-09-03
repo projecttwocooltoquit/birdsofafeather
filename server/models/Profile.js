@@ -19,6 +19,14 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  watchList: {
+    type: [Schema.Types.ObjectId],
+    ref: "Birds",
+  },
+  spottedList: {
+    type: [Schema.Types.ObjectId],
+    ref: "Birds",
+  },
 });
 
 // set up pre-save middleware to create password

@@ -6,6 +6,15 @@ const typeDefs = gql`
     name: String
     email: String
     password: String
+    spottedList: [Birds]
+    watchList: [Birds]
+  }
+
+  type Birds {
+    _id: ID
+    sciName: String
+    comName: String
+    imgSrc: String
   }
 
   type Auth {
@@ -21,10 +30,20 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addProfile(name: String!, email: String!, password: String!): Auth
+    addProfile(
+      name: String!
+      email: String!
+      password: String!
+      spottedList: [ID]
+      watchList: [ID]
+    ): Auth
     login(email: String!, password: String!): Auth
     removeProfile: Profile
+    addBird(sciName: String!, comName: String!, imgSrc: String!): Birds
   }
 `;
 
 module.exports = typeDefs;
+
+// addBirds
+// updateProfile
