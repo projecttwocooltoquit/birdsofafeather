@@ -3,8 +3,11 @@ import React, { useState, useEffect } from "react";
 
 const MapContainer = (props) => {
   const mapStyles = {
-    width: "100%",
-    height: "400px",
+    width: "45%",
+    height: "60%",
+    borderStyle: "solid",
+    borderColor: "green",
+    boxShadow: "0 0px 12px 6px gold"
   };
 
   // state to contain coordinates to center the map
@@ -20,6 +23,7 @@ const MapContainer = (props) => {
   // only renders markers if props are defined, otherwise renders map with no markers
   if (props.locations) {
     return (
+      
       <Map
         google={props.google}
         zoom={8}
@@ -40,6 +44,7 @@ const MapContainer = (props) => {
         google={props.google}
         zoom={8}
         style={mapStyles}
+        className="mapStyle"
         initialCenter={{ lat: 47.444, lng: -122.176 }}
       ></Map>
     );

@@ -24,12 +24,12 @@ const Card = (props) => {
     });
 
   return (
-    <div className="card" style={{ width: 18 + "rem" }}>
-      <img className="card-img-top" src={imageSrc} alt="Card image cap" />
+    <div className="card birdCard" style={{ width: 18 + "rem" }}>
+      <img className="card-img-top" src="..." alt="Card image cap" />
       <div className="card-body">
         <h5 className="card-title">{props.comName}</h5>
         <p className="card-text">{props.sciName}</p>
-        <a href="#" className="btn btn-primary">
+        <a href="#" className="goSomewhere">
           Go somewhere
         </a>
       </div>

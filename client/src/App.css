@@ -1,3 +1,13 @@
+:root {
+  --colorMain: rgb(5, 216, 16);
+  --colorSec: rgb(2, 65, 6);
+  --colorThi: rgb(236, 213, 5);
+  --colorFour:  rgb(0, 143, 7);
+}
+
+
+
+
 .App {
   text-align: center;
 }
@@ -25,8 +35,10 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color:white;
 }
+
+
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +47,101 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+
+
+.homeNav {
+  background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
+  color: white;
+  margin-bottom: 4%;
+  border-bottom: 3px solid var(--colorThi);
+}
+
+.flexWrap {
+  display: flex;
+  margin-left: 2%;
+  margin-right: 2%
+}
+
+
+.menuPosition {
+  flex: 40%;
+  background-color: gray;
+}
+
+.mapPosition {
+  flex: 50%;
+  margin-left: 3%;
+  margin-right: 7%;
+}
+
+
+.birdCard {
+  background-image: linear-gradient(to bottom, var(--colorThi), var(--colorSec));
+  border-style: solid;
+  border-color: var(--colorSec);
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.goSomewhere {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: large;
+  padding: 0.5rem;
+  background-color: var(--colorSec);
+  border-width: 1.5px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--colorMain);
+}
+
+.goSomewhere:hover {
+  background-color: var(--colorThi);
+  color: black;
+}
+
+
+
+
+.loginHeader {
+  background-image: linear-gradient(to bottom, var(--colorFour), var(--colorMain));
+}
+
+.loginContainer {
+  width: fit-content;
+  margin:auto;
+  margin-top: 7.5%;
+  border-style: solid;
+  border-color: var(--colorThi);
+  box-shadow: 0 0px 24px 10px var(--colorSec);
+}
+
+.inputExtra {
+
+  width: fit-content;
+  border-style: solid;
+  border-color: var(--colorSec);
+}
+
+.loginButton {
+  color: white;
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: large;
+  padding: 0.5rem;
+  margin-top: 3%;
+  background-color: var(--colorSec);
+  border-width: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--colorThi);
+}
+
+.loginButton:hover {
+  box-shadow: 0 0px 8px 6px var(--colorFour);
 }

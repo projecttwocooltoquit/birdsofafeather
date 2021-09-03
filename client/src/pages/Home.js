@@ -314,9 +314,9 @@ const Home = () => {
   // useEffect(() => {}, [userCountyChoice]);
 
   return (
-    <main className="container">
-      <div className="row">
-        <section className="col-6 col-md-4 d-flex flex-column mt-2">
+    <main >
+      <div className="flexWrap">
+        <section className="menuPostion">
           <p className="lead">
             This is a lead paragraph. It stands out from regular paragraphs.
           </p>
@@ -352,7 +352,7 @@ const Home = () => {
             </button>
           </div>
         </section>
-        <section className="col-md-8 mt-2">
+        <section className="mapPosition">
           <MapContainer
             locations={locationBirds}
             center={locationBirds[1]}
