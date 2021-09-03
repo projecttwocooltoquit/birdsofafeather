@@ -1,7 +1,14 @@
 import React from "react";
+import purplebird from "./images/sky.mp4";
 
 const Profile = () => {
-  return <main></main>;
+  return (
+    <main>
+      <video id="videobg" autoPlay loop muted>
+        <source src={purplebird} type="video/mp4" />
+      </video>
+    </main>
+  );
 };
 
 export default Profile;
