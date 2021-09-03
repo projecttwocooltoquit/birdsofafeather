@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
+import sky from "./images/sky.mp4";
 
 import Auth from "../utils/auth";
 
@@ -41,6 +42,9 @@ const Login = (props) => {
 
   return (
     <main className="flex-row justify-center mb-4">
+      <video id="videobg" autoPlay loop muted>
+        <source src={sky} type="video/mp4" />
+      </video>
       <div className="loginContainer">
         <div className="card">
           <h4 className="card-header loginHeader">Login</h4>

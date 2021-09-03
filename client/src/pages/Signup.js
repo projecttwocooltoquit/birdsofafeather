@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
-
+import greenbirds from "./images/greenbirds.mp4";
 function Signup(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
@@ -31,6 +31,9 @@ function Signup(props) {
 
   return (
     <div className="container my-1">
+      <video id="videobg" autoPlay loop muted>
+        <source src={greenbirds} type="video/mp4" />
+      </video>
       <Link to="/login">← Go to Login</Link>
 
       <h2>Signup</h2>
