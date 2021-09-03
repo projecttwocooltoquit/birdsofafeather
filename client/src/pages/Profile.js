@@ -1,5 +1,5 @@
 import React from "react";
-import purplebird from "./images/sky.mp4";
+import purplebird from "./images/purplebird.mp4";
 
 const Profile = () => {
   return (

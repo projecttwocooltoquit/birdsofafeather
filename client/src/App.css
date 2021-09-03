@@ -107,7 +107,8 @@
 }
 
 .loginContainer {
-  width: 40%;
+  background-color: white;
+  width: 35%;
   height: 50%;
   margin:auto;
   margin-top: 7.5%;
@@ -117,7 +118,13 @@
 }
 
 .labelExtra {
+  margin-top: 2%;
   margin-left: 3%;
+}
+
+.loginLink {
+  margin-top: 5%;
+  margin-bottom: 2%;
 }
 
 .inputExtra {

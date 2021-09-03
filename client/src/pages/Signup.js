@@ -34,11 +34,10 @@ function Signup(props) {
       <video id="videobg" autoPlay loop muted>
         <source src={greenbirds} type="video/mp4" />
       </video>
-      <Link to="/login">← Go to Login</Link>
 
       <h2 className="card-header loginHeader">Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row my-2">
           <label className="labelExtra" htmlFor="name">First Name:</label>
           <input
             className="form-input inputExtra"
@@ -49,7 +48,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row my-2">
           <label className="labelExtra" htmlFor="email">Email:</label>
           <input
             className="form-input inputExtra"
@@ -60,7 +59,7 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row my-2">
           <label className="labelExtra" htmlFor="pwd">Password:</label>
           <input
             className="form-input inputExtra"
@@ -72,12 +71,19 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row flex-end">
-          <button className="loginButton btn-block" type="submit">Submit</button>
+          <button 
+          className="loginButton btn-block" 
+          style={{ cursor: "pointer" }}
+          type="submit"
+          >
+          Submit
+          </button>
         </div>
       </form>
-      <br></br>
-      <Link to="/login">← Go to Login</Link>
-      <br></br>
+      
+      <div className="loginLink">
+        <Link to="/login" className="labelExtra">← Go to Login</Link>
+      </div>
     </div>
   );
 }
