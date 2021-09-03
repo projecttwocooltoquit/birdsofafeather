@@ -3,16 +3,14 @@ import Card from "../components/Card";
 import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { QUERY_PROFILES } from "../utils/queries";
-import { useQuery } from "@apollo/client";
+
+import forest from "./images/forest.mp4";
 
 // import { ApolloProvider, useMutation } from "@apollo/client";
 
 const API_KEY = process.env.REACT_APP_EBIRD_API_KEY;
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_PROFILES);
-  const profiles = data?.profiles || [];
 
   const states = [
     {
@@ -318,6 +316,9 @@ const Home = () => {
 
   return (
     <main>
+      <video id="videobg" autoPlay loop muted>
+        <source src={forest} type="video/mp4" />
+      </video>
       <div className="flexWrap">
         <section className="menuPostion">
           <p className="lead">
