@@ -30,17 +30,18 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
+    <div className="loginContainer my-1">
       <video id="videobg" autoPlay loop muted>
         <source src={greenbirds} type="video/mp4" />
       </video>
       <Link to="/login">← Go to Login</Link>
 
-      <h2>Signup</h2>
+      <h2 className="card-header loginHeader">Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
-          <label htmlFor="name">First Name:</label>
+          <label className="labelExtra" htmlFor="name">First Name:</label>
           <input
+            className="form-input inputExtra"
             placeholder="First"
             name="name"
             type="name"
@@ -49,8 +50,9 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email:</label>
+          <label className="labelExtra" htmlFor="email">Email:</label>
           <input
+            className="form-input inputExtra"
             placeholder="youremail@test.com"
             name="email"
             type="email"
@@ -59,8 +61,9 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
+          <label className="labelExtra" htmlFor="pwd">Password:</label>
           <input
+            className="form-input inputExtra"
             placeholder="******"
             name="password"
             type="password"
@@ -69,9 +72,12 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          <button className="loginButton btn-block" type="submit">Submit</button>
         </div>
       </form>
+      <br></br>
+      <Link to="/login">← Go to Login</Link>
+      <br></br>
     </div>
   );
 }
