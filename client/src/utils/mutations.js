@@ -19,3 +19,11 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const ADD_BIRD = gql`
+  mutation addBird($sciName: String!, $comName: String!, $imgSrc: String!) {
+    addBird(sciName: $sciName, comName: $comName, imgSrc: $imgSrc) {
+      _id
+    }
+  }
+`;

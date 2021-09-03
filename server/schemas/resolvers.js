@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { Profile } = require("../models");
+const { Profile, Birds } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -21,8 +21,17 @@ const resolvers = {
   },
 
   Mutation: {
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
+    addProfile: async (
+      parent,
+      { name, email, password, spottedList, watchList }
+    ) => {
+      const profile = await Profile.create({
+        name,
+        email,
+        password,
+        spottedList,
+        watchList,
+      });
       const token = signToken(profile);
 
       return { token, profile };
@@ -43,7 +52,6 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
-
     // Add a third argument to the resolver to access data in our `context`
     // Set up mutation so a logged in user can only remove their profile and no one else's
     removeProfile: async (parent, args, context) => {
@@ -51,6 +59,15 @@ const resolvers = {
         return Profile.findOneAndDelete({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    addBird: async (parent, { sciName, comName, imgSrc }) => {
+      const bird = await Birds.create({
+        sciName,
+        comName,
+        imgSrc,
+      });
+
+      return bird;
     },
   },
 };
