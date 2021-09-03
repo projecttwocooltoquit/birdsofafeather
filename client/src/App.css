@@ -2,11 +2,8 @@
   --colorMain: rgb(5, 216, 16);
   --colorSec: rgb(2, 65, 6);
   --colorThi: rgb(236, 213, 5);
-  --colorFour:  rgb(0, 143, 7);
+  --colorFour: rgb(0, 143, 7);
 }
-
-
-
 
 .App {
   text-align: center;
@@ -35,10 +32,8 @@
 }
 
 .App-link {
-  color:white;
+  color: white;
 }
-
-
 
 @keyframes App-logo-spin {
   from {
@@ -48,10 +43,6 @@
     transform: rotate(360deg);
   }
 }
-
-
-
-
 
 .homeNav {
   background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
@@ -63,9 +54,8 @@
 .flexWrap {
   display: flex;
   margin-left: 2%;
-  margin-right: 2%
+  margin-right: 2%;
 }
-
 
 .menuPosition {
   flex: 40%;
@@ -78,9 +68,12 @@
   margin-right: 7%;
 }
 
-
 .birdCard {
-  background-image: linear-gradient(to bottom, var(--colorThi), var(--colorSec));
+  background-image: linear-gradient(
+    to bottom,
+    var(--colorThi),
+    var(--colorSec)
+  );
   border-style: solid;
   border-color: var(--colorSec);
   margin-left: 5%;
@@ -105,11 +98,12 @@
   color: black;
 }
 
-
-
-
 .loginHeader {
-  background-image: linear-gradient(to bottom, var(--colorFour), var(--colorMain));
+  background-image: linear-gradient(
+    to bottom,
+    var(--colorFour),
+    var(--colorMain)
+  );
 }
 
 .loginContainer {
@@ -153,4 +147,35 @@
 
 .loginButton:hover {
   box-shadow: 0 0px 8px 6px var(--colorFour);
+}
+
+#videobg {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+}
+
+@media (min-aspect-ratio: 16/9) {
+  #videobg {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  #videobg {
+    width: auto;
+    height: 100%;
+  }
+}
+
+@media (max-width: 374px) {
+  #videobg {
+    display: none;
+  }
 }

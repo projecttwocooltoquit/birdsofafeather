@@ -3,6 +3,7 @@ import Card from "../components/Card";
 import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import forest from "./images/forest.mp4";
 // import { ApolloProvider, useMutation } from "@apollo/client";
 
 const API_KEY = process.env.REACT_APP_EBIRD_API_KEY;
@@ -314,7 +315,10 @@ const Home = () => {
   // useEffect(() => {}, [userCountyChoice]);
 
   return (
-    <main >
+    <main>
+      <video id="videobg" autoPlay loop muted>
+        <source src={forest} type="video/mp4" />
+      </video>
       <div className="flexWrap">
         <section className="menuPostion">
           <p className="lead">
