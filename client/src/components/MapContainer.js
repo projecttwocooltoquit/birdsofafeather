@@ -7,7 +7,7 @@ const MapContainer = (props) => {
     height: "60%",
     borderStyle: "solid",
     borderColor: "green",
-    boxShadow: "0 0px 12px 6px gold"
+    boxShadow: "0 0px 12px 6px gold",
   };
 
   // state to contain coordinates to center the map
@@ -23,7 +23,6 @@ const MapContainer = (props) => {
   // only renders markers if props are defined, otherwise renders map with no markers
   if (props.locations) {
     return (
-      
       <Map
         google={props.google}
         zoom={8}

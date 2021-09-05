@@ -3,7 +3,6 @@ import Card from "../components/Card";
 import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-
 import forest from "./images/forest.mp4";
 
 // import { ApolloProvider, useMutation } from "@apollo/client";
@@ -11,7 +10,6 @@ import forest from "./images/forest.mp4";
 const API_KEY = process.env.REACT_APP_EBIRD_API_KEY;
 
 const Home = () => {
-
   const states = [
     {
       name: "Alabama",
@@ -222,6 +220,7 @@ const Home = () => {
       abbreviation: "WY",
     },
   ];
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -361,10 +360,30 @@ const Home = () => {
             locations={locationBirds}
             center={locationBirds[1]}
           ></MapContainer>
+        </section>
+      </div>
+      {/* THIS CONTAINER FOR THE CAROUSEL CANNOT BE FLEX */}
+      <div className="container">
+        <Carousel
+          swipeable={false}
+          draggable={false}
+          showDots={true}
+          responsive={responsive}
+          ssr={true} // means to render carousel on server-side.
+          infinite={true}
+          autoPlaySpeed={1000}
+          keyBoardControl={true}
+          customTransition="all .5"
+          transitionDuration={500}
+          containerClass="carousel-container"
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+        >
           {locationBirds.map((bird, index) => (
             <Card key={index} sciName={bird.sciName} comName={bird.comName} />
           ))}
-        </section>
+        </Carousel>
       </div>
     </main>
   );
