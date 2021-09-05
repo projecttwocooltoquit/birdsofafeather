@@ -40,10 +40,8 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     removeProfile: Profile
     addBird(sciName: String!, comName: String!, imgSrc: String!): Birds
+    updateWatchList(_id: ID!, watchList: String!): Profile
   }
 `;
 
 module.exports = typeDefs;
-
-// addBirds
-// updateProfile

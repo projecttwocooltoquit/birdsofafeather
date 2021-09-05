@@ -27,3 +27,13 @@ export const ADD_BIRD = gql`
     }
   }
 `;
+
+// truly have no idea how to word this??
+export const UPDATE_WATCHLIST = gql`
+  mutation updateWatchList($watchList: [ID]!) {
+    updateWatchList(watchList: $ID) {
+      _id
+      watchList
+    }
+  }
+`;

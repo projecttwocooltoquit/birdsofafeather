@@ -20,6 +20,7 @@
         "dotenv": "^10.0.0",
         "google-maps-react": "^2.0.6",
         "graphql": "^15.5.0",
+        "npm-overlapping-marker-spiderfier": "^1.0.3",
         "react-multi-carousel": "^2.6.5"
     }
 }
