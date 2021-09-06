@@ -51,15 +51,39 @@
   border-bottom: 3px solid var(--colorThi);
 }
 
+.nav-link,
+.navbar-brand {
+  color: white;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: black;
+}
+
 .flexWrap {
   display: flex;
+  align-items: center;
   margin-left: 2%;
   margin-right: 2%;
 }
 
 .menuPosition {
+  color: white;
+  height: fit-content;
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
   flex: 40%;
-  background-color: gray;
+  background-image: linear-gradient(
+    to bottom,
+    var(--colorThi),
+    var(--colorSec)
+  );
+  align-content: center;
+  justify-content: center;
+  border: solid green;
+  box-shadow: 0 0px 12px 6px gold;
 }
 
 .mapPosition {

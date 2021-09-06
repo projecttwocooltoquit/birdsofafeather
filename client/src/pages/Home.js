@@ -318,10 +318,8 @@ const Home = () => {
         <source src={forest} type="video/mp4" />
       </video>
       <div className="flexWrap">
-        <section className="menuPostion">
-          <p className="lead">
-            This is a lead paragraph. It stands out from regular paragraphs.
-          </p>
+        <section className="menuPosition">
+          <p className="lead">Select a state and county to begin.</p>
           <div className="container d-flex">
             <select
               id="state-dropdwn"
