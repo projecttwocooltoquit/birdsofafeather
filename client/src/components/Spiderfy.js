@@ -17,7 +17,7 @@ class Spiderfy extends React.Component {
   async markerNodeMounted(ref) {
     const marker = ref.state[Marker];
     this.oms.addMarker(marker);
-    window.google.maps.event.addListener(marker, "spider_click", (e) => {
+    await window.google.maps.event.addListener(marker, "spider_click", (e) => {
       if (this.props.onSpiderClick) this.props.onSpiderClick(e);
     });
   }

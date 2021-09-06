@@ -66,6 +66,7 @@
   flex: 50%;
   margin-left: 3%;
   margin-right: 7%;
+  margin-bottom: 30%;
 }
 
 .birdCard {
@@ -110,7 +111,7 @@
   background-color: white;
   width: 35%;
   height: 50%;
-  margin:auto;
+  margin: auto;
   margin-top: 7.5%;
   border-style: solid;
   border-color: var(--colorThi);

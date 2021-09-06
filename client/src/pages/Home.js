@@ -312,8 +312,6 @@ const Home = () => {
     }
   }, [userStateChoice]);
 
-  console.log(locationBirds);
-
   return (
     <main>
       <video id="videobg" autoPlay loop muted>
