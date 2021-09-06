@@ -5,11 +5,6 @@ import { useMutation, useQuery } from "@apollo/client";
 const Flickr = require("flickr-sdk");
 
 const Card = (props) => {
-  const cardStyles = {
-    width: "100%",
-    height: "50%",
-  };
-
   const [imageSrc, setImageSrc] = useState();
   const [addBird, { error }] = useMutation(ADD_BIRD);
   const [updateWatchList] = useMutation(UPDATE_WATCHLIST);
@@ -50,17 +45,16 @@ const Card = (props) => {
 
   return (
     <div className="card birdCard" style={{ width: 18 + "rem" }}>
-      <img
-        className="card-img-top"
-        style={cardStyles}
-        src={imageSrc}
-        alt="Card cap"
-      />
+      <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
       <div className="card-body">
         <h5 className="card-title">{props.comName}</h5>
         <p className="card-text">{props.sciName}</p>
-        <button onClick={handleWatchList}>Add to Watch List</button>
-        <button>Add to Spotted List</button>
+        <div className="button-container">
+          <button className="add-button" onClick={handleWatchList}>
+            Add to Watch List
+          </button>
+          <button className="add-button">Add to Spotted List</button>
+        </div>
       </div>
     </div>
   );

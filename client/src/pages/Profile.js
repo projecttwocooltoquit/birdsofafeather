@@ -23,21 +23,42 @@ const Profile = () => {
     },
   };
   return (
-    <main>
+    <main className="profile-page">
       <video id="videobg" autoPlay loop muted>
         <source src={purplebird} type="video/mp4" />
       </video>
-      <Carousel responsive={responsive}>
-        <Card sciName="turdus migratorious" comName="robin" />
-        <Card sciName="turdus migratorious" comName="robin" />
-        <Card sciName="turdus migratorious" comName="robin" />
-        <Card sciName="turdus migratorious" comName="robin" />
-        <Card sciName="turdus migratorious" comName="robin" />
-        <Card sciName="turdus migratorious" comName="robin" />
-        {/* {locationBirds.map((bird, index) => (
+      <div className="name-container">
+        <h1>Welcome back, Name!</h1>
+        <p>
+          You can manage your Watch List and Spotted List below. Happy birding!
+        </p>
+      </div>
+      <div className="watch-list">
+        <Carousel responsive={responsive}>
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          {/* {locationBirds.map((bird, index) => (
             <Card key={index} sciName={bird.sciName} comName={bird.comName} />
           ))} */}
-      </Carousel>
+        </Carousel>
+      </div>
+      <div className="spotted-list">
+        <Carousel responsive={responsive}>
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          <Card sciName="turdus migratorious" comName="robin" />
+          {/* {locationBirds.map((bird, index) => (
+            <Card key={index} sciName={bird.sciName} comName={bird.comName} />
+          ))} */}
+        </Carousel>
+      </div>
     </main>
   );
 };

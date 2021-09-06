@@ -318,9 +318,15 @@ const Home = () => {
         <source src={forest} type="video/mp4" />
       </video>
       <div className="flexWrap">
-        <section className="menuPostion">
-          <p className="lead">
-            This is a lead paragraph. It stands out from regular paragraphs.
+        <section className="menuPosition">
+          <h4>Select a state and county to begin.</h4>
+          <p>
+            To add a bird you've seen to your profile, click "Add to Spotted
+            List"
+          </p>
+          <p>
+            If you see a bird you'd like to keep an eye out for, you can add
+            that bird to your Watch List by clicking "Add to Watch List"
           </p>
           <div className="container d-flex">
             <select

@@ -37,7 +37,7 @@ function Signup(props) {
       </video>
 
       <h2 className="card-header loginHeader">Signup</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form className="signup-form" onSubmit={handleFormSubmit}>
         <div className="flex-row my-2">
           <label className="labelExtra" htmlFor="name">
             First Name:

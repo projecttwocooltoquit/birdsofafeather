@@ -1,8 +1,9 @@
 :root {
-  --colorMain: rgb(5, 216, 16);
+  --colorMain: rgb(153, 202, 155);
   --colorSec: rgb(2, 65, 6);
-  --colorThi: rgb(236, 213, 5);
-  --colorFour: rgb(0, 143, 7);
+  --colorThi: rgb(180, 174, 119);
+  --colorFour: rgb(90, 124, 92);
+  --colorFive: rgb(228, 224, 205);
 }
 
 .App {
@@ -46,20 +47,45 @@
 
 .homeNav {
   background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
-  color: white;
+  color: var(--colorFive);
   margin-bottom: 4%;
   border-bottom: 3px solid var(--colorThi);
 }
 
+.nav-link,
+.navbar-brand {
+  color: var(--colorFive);
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: white;
+}
+
 .flexWrap {
   display: flex;
+  align-items: center;
   margin-left: 2%;
   margin-right: 2%;
 }
 
 .menuPosition {
+  color: white;
+  height: fit-content;
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
   flex: 40%;
-  background-color: gray;
+  background-image: linear-gradient(
+    to bottom,
+    var(--colorThi),
+    var(--colorSec)
+  );
+  align-content: center;
+  justify-content: center;
+  border: solid green;
+  box-shadow: 0 0px 12px 6px gold;
+  text-align: center;
 }
 
 .mapPosition {
@@ -75,14 +101,36 @@
     var(--colorThi),
     var(--colorSec)
   );
-  border-style: solid;
+  border-style: solid 6px black;
   border-color: var(--colorSec);
-  margin-left: 5%;
-  margin-top: 3%;
+  margin: 3% 40%;
+}
+
+.bird-img {
+  border-bottom: solid 1px black;
+}
+
+.button-container {
+  display: flex;
+}
+
+.add-button {
+  width: 50%;
+  color: var(--colorFive);
+  font-weight: bold;
+  background-color: var(--colorSec);
+  border-radius: 5px;
+  border: 1px solid var(--colorThi);
+  margin: 2%;
+}
+
+.add-button:hover {
+  box-shadow: 0 0px 8px 6px var(--colorFour);
+  cursor: pointer;
 }
 
 .goSomewhere {
-  color: white;
+  color: var(--colorFive);
   font-family: sans-serif;
   font-weight: bolder;
   font-size: large;
@@ -100,15 +148,12 @@
 }
 
 .loginHeader {
-  background-image: linear-gradient(
-    to bottom,
-    var(--colorFour),
-    var(--colorMain)
-  );
+  background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
+  color: white;
 }
 
 .loginContainer {
-  background-color: white;
+  background-color: var(--colorFive);
   width: 35%;
   height: 50%;
   margin: auto;
@@ -118,14 +163,21 @@
   box-shadow: 0 0px 24px 10px var(--colorSec);
 }
 
+.login-body {
+  background-color: var(--colorFive);
+  text-align: center;
+}
+
 .labelExtra {
   margin-top: 2%;
   margin-left: 3%;
+  color: black;
 }
 
 .loginLink {
   margin-top: 5%;
   margin-bottom: 2%;
+  color: black;
 }
 
 .inputExtra {
@@ -138,7 +190,7 @@
 
 .loginButton {
   width: 50%;
-  color: white;
+  color: var(--colorFive);
   font-family: sans-serif;
   font-weight: bolder;
   font-size: large;
@@ -151,10 +203,67 @@
   border-radius: 5px;
   border-style: solid;
   border-color: var(--colorThi);
+  cursor: pointer;
 }
 
 .loginButton:hover {
   box-shadow: 0 0px 8px 6px var(--colorFour);
+}
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.watch-list {
+  background-color: rgb(90, 124, 92);
+  color: white;
+  width: 75%;
+  margin: 2%;
+  height: fit-content;
+  align-content: center;
+  justify-content: center;
+  border: solid green;
+  box-shadow: 0 0px 12px 6px gold;
+  text-align: center;
+}
+
+.spotted-list {
+  background-color: rgb(90, 124, 92);
+  color: white;
+  width: 75%;
+  margin: 2%;
+  height: fit-content;
+  align-content: center;
+  justify-content: center;
+  border: solid green;
+  box-shadow: 0 0px 12px 6px gold;
+  text-align: center;
+}
+
+.name-container {
+  color: white;
+  width: 75%;
+  margin: 2%;
+  height: fit-content;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-image: linear-gradient(
+    to bottom,
+    var(--colorThi),
+    var(--colorSec)
+  );
+  align-content: center;
+  justify-content: center;
+  border: solid green;
+  box-shadow: 0 0px 12px 6px gold;
+  text-align: center;
 }
 
 #videobg {
