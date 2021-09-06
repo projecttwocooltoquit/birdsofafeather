@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { ADD_BIRD, UPDATE_WATCHLIST } from "../utils/mutations";
 import { useMutation, useQuery } from "@apollo/client";
-import Auth from "../utils/auth";
 
-const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
+const Flickr = require("flickr-sdk");
 
 const Card = (props) => {
   const cardStyles = {
@@ -15,22 +14,18 @@ const Card = (props) => {
   const [addBird, { error }] = useMutation(ADD_BIRD);
   const [updateWatchList] = useMutation(UPDATE_WATCHLIST);
 
-  fetch(
-    `https://api.unsplash.com/search/photos?page=2&query=${props.comName}&per_page=1`,
-    {
-      headers: {
-        Authorization: `Client-ID ${API_KEY}`,
-      },
-    }
-  )
-    .then((response) => {
-      return response.json();
+  var flickr = new Flickr(process.env.REACT_APP_FLICKR_API_KEY);
+  flickr.photos
+    .search({
+      text: props.sciName,
     })
-    .then((data) => {
-      setImageSrc(data.results[0].urls.full);
+    .then(function (res) {
+      setImageSrc(
+        `https://live.staticflickr.com/${res.body.photos.photo[1].server}/${res.body.photos.photo[1].id}_${res.body.photos.photo[1].secret}_w.jpg`
+      );
     })
-    .catch((error) => {
-      console.error(error);
+    .catch(function (err) {
+      console.error(err);
     });
 
   const handleWatchList = async () => {
