@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 import greenbirds from "./images/greenbirds.mp4";
+
 function Signup(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
@@ -38,7 +39,9 @@ function Signup(props) {
       <h2 className="card-header loginHeader">Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row my-2">
-          <label className="labelExtra" htmlFor="name">First Name:</label>
+          <label className="labelExtra" htmlFor="name">
+            First Name:
+          </label>
           <input
             className="form-input inputExtra"
             placeholder="First"
@@ -49,7 +52,9 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row my-2">
-          <label className="labelExtra" htmlFor="email">Email:</label>
+          <label className="labelExtra" htmlFor="email">
+            Email:
+          </label>
           <input
             className="form-input inputExtra"
             placeholder="youremail@test.com"
@@ -60,7 +65,9 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row my-2">
-          <label className="labelExtra" htmlFor="pwd">Password:</label>
+          <label className="labelExtra" htmlFor="pwd">
+            Password:
+          </label>
           <input
             className="form-input inputExtra"
             placeholder="******"
@@ -71,18 +78,20 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row flex-end">
-          <button 
-          className="loginButton btn-block" 
-          style={{ cursor: "pointer" }}
-          type="submit"
+          <button
+            className="loginButton btn-block"
+            style={{ cursor: "pointer" }}
+            type="submit"
           >
-          Submit
+            Submit
           </button>
         </div>
       </form>
-      
+
       <div className="loginLink">
-        <Link to="/login" className="labelExtra">← Go to Login</Link>
+        <Link to="/login" className="labelExtra">
+          ← Go to Login
+        </Link>
       </div>
     </div>
   );

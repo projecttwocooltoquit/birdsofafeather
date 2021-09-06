@@ -246,7 +246,6 @@ const Home = () => {
   const [locationBirds, setLocationBirds] = useState([]);
 
   const handleUserStateChoice = (e) => {
-    // grabs the value from the user selected state option
     setUserStateChoice(e.target.value);
   };
 
@@ -254,6 +253,7 @@ const Home = () => {
     setUserCountyChoice(e.target.value);
   };
 
+  // takes in user's county choice, makes ebird API call to generate birds spotted in that area
   useEffect(() => {
     if (!!userCountyChoice) {
       // Your useEffect code here to be run on update
@@ -267,7 +267,7 @@ const Home = () => {
       };
 
       fetch(
-        `https://api.ebird.org/v2/data/obs/${userCountyChoice}/recent?maxResults=5`,
+        `https://api.ebird.org/v2/data/obs/${userCountyChoice}/recent?maxResults=10`,
         requestOptions
       )
         .then((response) => {
@@ -282,8 +282,7 @@ const Home = () => {
     }
   }, [userCountyChoice]);
 
-  // useEffect listens to user's state choice and makes an api call using the state info to generate a list of counties
-  // sets the county state which is then used to populate the county choices dropdown
+  // takes in user's state choice, makes ebird API call to generate counties and county code values
   useEffect(() => {
     if (!!userStateChoice) {
       let myHeaders = new Headers();
