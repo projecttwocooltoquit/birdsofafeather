@@ -4,7 +4,15 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../components/Card";
 
+import { useQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
+
 const Profile = () => {
+  const { loading, data } = useQuery(QUERY_ME);
+  const profiles = data?.profiles || [];
+
+  console.log(data);
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -22,6 +30,7 @@ const Profile = () => {
       slidesToSlide: 1, // optional, default to 1.
     },
   };
+
   return (
     <main className="profile-page">
       <video id="videobg" autoPlay loop muted>
