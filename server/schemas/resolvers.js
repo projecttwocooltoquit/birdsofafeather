@@ -18,6 +18,9 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    birds: async () => {
+      return Birds.find();
+    },
   },
 
   Mutation: {
@@ -69,13 +72,18 @@ const resolvers = {
 
       return bird;
     },
-    updateWatchList: async (parent, { _id, birdData }) => {
-      return await Profile.findByIdAndUpdate(
-        _id,
-        // what am i supposed to give this to update?? like what is birdData, we need the data from adding the bird to the bird db from card.js - how do i tell this that's what data we need
-        { $inc: { watchList: birdData } },
-        { new: true }
-      );
+    updateWatchList: async (parent, birdData, context) => {
+      if (context.user) {
+        const updatedUser = await Profile.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { watchList: birdData } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
     },
   },
 };
