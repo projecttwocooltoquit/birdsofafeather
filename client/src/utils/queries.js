@@ -26,3 +26,13 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const QUERY_BIRDS = gql`
+  query allBirds {
+    Birds {
+      _id
+      sciName
+      comName
+    }
+  }
+`;

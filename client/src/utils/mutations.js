@@ -30,10 +30,17 @@ export const ADD_BIRD = gql`
 
 // truly have no idea how to word this??
 export const UPDATE_WATCHLIST = gql`
-  mutation updateWatchList($watchList: [ID]!) {
-    updateWatchList(watchList: $ID) {
+  mutation updateWatchList($birdData: String!) {
+    updateWatchList(birdData: $birdData) {
       _id
-      watchList
+      name
+      email
+      watchList {
+        _id
+        sciName
+        comName
+        imgSrc
+      }
     }
   }
 `;

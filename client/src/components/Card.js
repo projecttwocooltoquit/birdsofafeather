@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { ADD_BIRD, UPDATE_WATCHLIST } from "../utils/mutations";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/auth";
 
 const Flickr = require("flickr-sdk");
 
 const Card = (props) => {
-  const [imageSrc, setImageSrc] = useState();
+  const [imageSrc, setImageSrc] = useState("");
+  const [watchListBird, setWatchListBird] = useState("");
+
   const [addBird, { error }] = useMutation(ADD_BIRD);
   const [updateWatchList] = useMutation(UPDATE_WATCHLIST);
 
@@ -36,10 +39,29 @@ const Card = (props) => {
           imgSrc: imageSrc,
         },
       });
-      console.log(data.addBird._id);
+      setWatchListBird(data.addBird._id);
       // updateWatchList(data.addBird._id);
     } catch (error) {
       console.log(error);
+    }
+
+    updateProfileWatchList();
+  };
+
+  const updateProfileWatchList = async () => {
+    // get token
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+    try {
+      const { newData } = await updateWatchList({
+        variables: { birdData: watchListBird },
+      });
+      console.log(newData);
+    } catch (err) {
+      console.error(err);
     }
   };
 

@@ -27,6 +27,7 @@ const typeDefs = gql`
     profile(profileId: ID!): Profile
     # Because we have the context functionality in place to check a JWT and decode its data, we can use a query that will always find and return the logged in user's data
     me: Profile
+    birds: [Birds]!
   }
 
   type Mutation {
@@ -40,7 +41,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     removeProfile: Profile
     addBird(sciName: String!, comName: String!, imgSrc: String!): Birds
-    updateWatchList(_id: ID!, watchList: String!): Profile
+    updateWatchList(birdData: String!): Profile
   }
 `;
 
