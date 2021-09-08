@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import purplebird from "./images/purplebird.mp4";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../components/Card";
 
 import { useQuery } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_ONE_BIRD } from "../utils/queries";
 
 const Profile = () => {
-  const { loading, data } = useQuery(QUERY_ME);
+  // const [singleBird, { birdData }] = useQuery(QUERY_ONE_BIRD);
+  const { data } = useQuery(QUERY_ME);
+
   const profiles = data?.profiles || [];
+
+  // const [birdsToQuery, setBirdsToQuery] = useState([]);
+
+  // // singleBird({
+  // //   variables: { birdId: birdsToQuery },
+  // // });
 
   console.log(data);
 

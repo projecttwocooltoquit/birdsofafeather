@@ -17,6 +17,7 @@
         "concurrently": "^5.1.0"
     },
     "dependencies": {
+        "@googlemaps/markerclustererplus": "^1.2.0",
         "dotenv": "^10.0.0",
         "flickr-sdk": "^3.10.0",
         "google-maps-react": "^2.0.6",
