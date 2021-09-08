@@ -5,7 +5,7 @@ import Spiderfy from "./Spiderfy";
 const MapContainer = (props) => {
   const mapStyles = {
     width: "50%",
-    height: "50%",
+    height: "400px",
     borderStyle: "solid",
     borderColor: "green",
     boxShadow: "0 0px 12px 6px gold",

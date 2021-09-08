@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand-lg homeNav">
+    <nav className="navbar navbar-expand homeNav">
       <Link className="navbar-brand" to="/">
         Birds of a Feather
       </Link>
