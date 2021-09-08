@@ -72,11 +72,24 @@ const resolvers = {
 
       return bird;
     },
-    updateWatchList: async (parent, birdData, context) => {
+    updateWatchList: async (parent, { birdData }, context) => {
       if (context.user) {
         const updatedUser = await Profile.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { watchList: birdData } },
+          { new: true }
+        );
+
+        return updatedUser;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
+    updateSpottedList: async (parent, { birdData }, context) => {
+      if (context.user) {
+        const updatedUser = await Profile.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { spottedList: birdData } },
           { new: true }
         );
 

@@ -44,3 +44,19 @@ export const UPDATE_WATCHLIST = gql`
     }
   }
 `;
+
+export const UPDATE_SPOTTEDLIST = gql`
+  mutation updateSpottedList($birdData: String!) {
+    updateSpottedList(birdData: $birdData) {
+      _id
+      name
+      email
+      spottedList {
+        _id
+        sciName
+        comName
+        imgSrc
+      }
+    }
+  }
+`;
