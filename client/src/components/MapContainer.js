@@ -1,6 +1,9 @@
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import React, { useState, useEffect } from "react";
 import Spiderfy from "./Spiderfy";
+import MarkerClusterer, {
+  MarkerClustererOptions,
+} from "@googlemaps/markerclustererplus";
 
 const MapContainer = (props) => {
   const mapStyles = {

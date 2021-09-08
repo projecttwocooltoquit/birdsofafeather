@@ -7,7 +7,6 @@ const resolvers = {
     profiles: async () => {
       return Profile.find();
     },
-
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId });
     },
@@ -20,6 +19,9 @@ const resolvers = {
     },
     birds: async () => {
       return Birds.find();
+    },
+    birdByID: async (parent, { birdId }) => {
+      return Birds.findOne({ _id: birdId });
     },
   },
 
