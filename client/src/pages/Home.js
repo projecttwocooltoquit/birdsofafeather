@@ -317,6 +317,10 @@ const Home = () => {
       <video id="videobg" autoPlay loop muted>
         <source src={forest} type="video/mp4" />
       </video>
+      <div className="banner name-container">
+        <h1>Welcome!</h1>
+        <p>You are signed in!</p>
+      </div>
       <div className="flexWrap">
         <section className="menuPosition">
           <h4>Select a state and county to begin.</h4>
