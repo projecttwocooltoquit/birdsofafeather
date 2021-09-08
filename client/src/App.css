@@ -65,17 +65,16 @@
 .flexWrap {
   display: flex;
   align-items: center;
-  margin-left: 2%;
-  margin-right: 2%;
+  margin-left: 4%;
+  margin-right: 4%;
 }
 
 .menuPosition {
   color: white;
-  height: fit-content;
-  padding: 5%;
+  height: 400px;
+  padding: 3%;
   display: flex;
   flex-wrap: wrap;
-  flex: 40%;
   background-image: linear-gradient(
     to bottom,
     var(--colorThi),
@@ -89,10 +88,10 @@
 }
 
 .mapPosition {
-  flex: 50%;
+  width: 50%;
   margin-left: 3%;
-  margin-right: 7%;
-  margin-bottom: 30%;
+  margin-right: 50%;
+  margin-bottom: 70%;
 }
 
 .birdCard {
@@ -103,11 +102,14 @@
   );
   border-style: solid 6px black;
   border-color: var(--colorSec);
-  margin: 3% 40%;
+  box-shadow: 0 0px 16px 3px var(--colorThi);
+  margin: 3%;
+  margin-left: 15%;
 }
 
 .bird-img {
   border-bottom: solid 1px black;
+  height: 250px;
 }
 
 .button-container {

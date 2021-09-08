@@ -328,7 +328,7 @@ const Home = () => {
             If you see a bird you'd like to keep an eye out for, you can add
             that bird to your Watch List by clicking "Add to Watch List"
           </p>
-          <div className="container d-flex">
+          <div className="container">
             <select
               id="state-dropdwn"
               className="form-select m-2"
@@ -367,6 +367,9 @@ const Home = () => {
           ></MapContainer>
         </section>
       </div>
+      <br></br>
+      <br></br>
+      <br></br>
       {/* THIS CONTAINER FOR THE CAROUSEL CANNOT BE FLEX */}
       <div className="container">
         <Carousel
