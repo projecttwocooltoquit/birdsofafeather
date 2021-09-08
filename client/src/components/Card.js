@@ -33,89 +33,93 @@ const Card = (props) => {
     });
 
   const handleWatchList = async () => {
-    // bird gets added to db
     try {
-      const { data } = await addBird({
+      const { data } = await updateWatchList({
         variables: {
           sciName: props.sciName,
           comName: props.comName,
           imgSrc: imageSrc,
         },
       });
-      console.log(data.addBird._id);
-      setWatchListBird(data.addBird._id);
+      alert(`${props.comName} has been added to your Watch List!`);
     } catch (error) {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    if (!!watchListBird) {
-      const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-      if (!token) {
-        return false;
-      }
-      try {
-        const { watchListData } = updateWatchList({
-          variables: { birdData: watchListBird },
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  }, [watchListBird]);
 
   const handleSpottedList = async () => {
     try {
-      const { data } = await addBird({
+      const { data } = await updateSpottedList({
         variables: {
           sciName: props.sciName,
           comName: props.comName,
           imgSrc: imageSrc,
         },
       });
-      setSpottedListBird(data.addBird._id);
-      console.log(data.addBird._id);
+      alert(`${props.comName} has been added to your Spotted List!`);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
-    if (!!spottedListBird) {
-      const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const handleWatchListRemove = () => {
+    console.log("you want to remove me but you can't, sorry (watchList)");
+  };
 
-      if (!token) {
-        return false;
-      }
-      try {
-        const { spottedListData } = updateSpottedList({
-          variables: { birdData: spottedListBird },
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  }, [spottedListBird]);
+  const handleSpottedListRemove = () => {
+    console.log("you want to remove me but you can't, sorry (spottedList)");
+  };
 
-  return (
-    <div className="card birdCard" style={{ width: 18 + "rem" }}>
-      <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
-      <div className="card-body">
-        <h5 className="card-title">{props.comName}</h5>
-        <p className="card-text">{props.sciName}</p>
-        <div className="button-container">
-          <button className="add-button" onClick={handleWatchList}>
-            Add to Watch List
-          </button>
-          <button className="add-button" onClick={handleSpottedList}>
-            Add to Spotted List
-          </button>
+  if (props.listType === "watch") {
+    return (
+      <div className="card birdCard" style={{ width: 18 + "rem" }}>
+        <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
+        <div className="card-body">
+          <h5 className="card-title">{props.comName}</h5>
+          <p className="card-text">{props.sciName}</p>
+          <div className="button-container">
+            <button className="add-button" onClick={handleWatchListRemove}>
+              Remove
+            </button>
+            <button className="add-button">Spotted!</button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  } else if (props.listType === "spotted") {
+    return (
+      <div className="card birdCard" style={{ width: 18 + "rem" }}>
+        <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
+        <div className="card-body">
+          <h5 className="card-title">{props.comName}</h5>
+          <p className="card-text">{props.sciName}</p>
+          <div className="button-container">
+            <button className="add-button" onClick={handleSpottedListRemove}>
+              Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="card birdCard" style={{ width: 18 + "rem" }}>
+        <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
+        <div className="card-body">
+          <h5 className="card-title">{props.comName}</h5>
+          <p className="card-text">{props.sciName}</p>
+          <div className="button-container">
+            <button className="add-button" onClick={handleWatchList}>
+              Add to Watch List
+            </button>
+            <button className="add-button" onClick={handleSpottedList}>
+              Add to Spotted List
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 };
 
 export default Card;

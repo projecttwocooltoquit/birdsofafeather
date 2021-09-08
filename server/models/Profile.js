@@ -20,11 +20,11 @@ const profileSchema = new Schema({
     minlength: 5,
   },
   watchList: {
-    type: [Schema.Types.ObjectId],
+    type: [Schema.Types.Mixed],
     ref: "Birds",
   },
   spottedList: {
-    type: [Schema.Types.ObjectId],
+    type: [Schema.Types.Mixed],
     ref: "Birds",
   },
 });

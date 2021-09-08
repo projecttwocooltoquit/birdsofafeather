@@ -4,22 +4,23 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Card from "../components/Card";
 
-import { useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_ONE_BIRD } from "../utils/queries";
+import { useQuery, useLazyQuery } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
 
 const Profile = () => {
-  // const [singleBird, { birdData }] = useQuery(QUERY_ONE_BIRD);
-  const { data } = useQuery(QUERY_ME);
+  const { data, loading } = useQuery(QUERY_ME);
 
-  const profiles = data?.profiles || [];
+  const [name, setName] = useState("");
+  const [userWatchList, setUserWatchList] = useState([]);
+  const [userSpottedList, setUserSpottedList] = useState([]);
 
-  // const [birdsToQuery, setBirdsToQuery] = useState([]);
-
-  // // singleBird({
-  // //   variables: { birdId: birdsToQuery },
-  // // });
-
-  console.log(data);
+  useEffect(() => {
+    if (!loading) {
+      setName(data.me.name);
+      setUserWatchList(data.me.watchList);
+      setUserSpottedList(data.me.spottedList);
+    }
+  }, [data]);
 
   const responsive = {
     desktop: {
@@ -45,35 +46,35 @@ const Profile = () => {
         <source src={purplebird} type="video/mp4" />
       </video>
       <div className="name-container">
-        <h1>Welcome back, Name!</h1>
+        <h1>Welcome back, {name}!</h1>
         <p>
           You can manage your Watch List and Spotted List below. Happy birding!
         </p>
       </div>
       <div className="watch-list">
+        <h1>Your Watch List:</h1>
         <Carousel responsive={responsive}>
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          {/* {locationBirds.map((bird, index) => (
-            <Card key={index} sciName={bird.sciName} comName={bird.comName} />
-          ))} */}
+          {userWatchList.map((bird, index) => (
+            <Card
+              key={index}
+              sciName={bird.sciName}
+              comName={bird.comName}
+              listType="watch"
+            />
+          ))}
         </Carousel>
       </div>
       <div className="spotted-list">
+        <h1>Your Spotted List:</h1>
         <Carousel responsive={responsive}>
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          <Card sciName="turdus migratorious" comName="robin" />
-          {/* {locationBirds.map((bird, index) => (
-            <Card key={index} sciName={bird.sciName} comName={bird.comName} />
-          ))} */}
+          {userWatchList.map((bird, index) => (
+            <Card
+              key={index}
+              sciName={bird.sciName}
+              comName={bird.comName}
+              listType="spotted"
+            />
+          ))}
         </Carousel>
       </div>
     </main>

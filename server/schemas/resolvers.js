@@ -20,7 +20,7 @@ const resolvers = {
     birds: async () => {
       return Birds.find();
     },
-    birdByID: async (parent, { birdId }) => {
+    bird: async (parent, { birdId }) => {
       return Birds.findOne({ _id: birdId });
     },
   },
@@ -74,11 +74,11 @@ const resolvers = {
 
       return bird;
     },
-    updateWatchList: async (parent, { birdData }, context) => {
+    updateWatchList: async (parent, { sciName, comName, imgSrc }, context) => {
       if (context.user) {
         const updatedUser = await Profile.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { watchList: birdData } },
+          { $push: { watchList: { sciName, comName, imgSrc } } },
           { new: true }
         );
 
@@ -87,11 +87,15 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    updateSpottedList: async (parent, { birdData }, context) => {
+    updateSpottedList: async (
+      parent,
+      { sciName, comName, imgSrc },
+      context
+    ) => {
       if (context.user) {
         const updatedUser = await Profile.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { spottedList: birdData } },
+          { $push: { spottedList: { sciName, comName, imgSrc } } },
           { new: true }
         );
 
