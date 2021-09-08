@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { ADD_BIRD, UPDATE_WATCHLIST } from "../utils/mutations";
+import {
+  ADD_BIRD,
+  UPDATE_WATCHLIST,
+  UPDATE_SPOTTEDLIST,
+} from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 
@@ -8,9 +12,11 @@ const Flickr = require("flickr-sdk");
 const Card = (props) => {
   const [imageSrc, setImageSrc] = useState("");
   const [watchListBird, setWatchListBird] = useState("");
+  const [spottedListBird, setSpottedListBird] = useState("");
 
   const [addBird, { error }] = useMutation(ADD_BIRD);
   const [updateWatchList] = useMutation(UPDATE_WATCHLIST);
+  const [updateSpottedList] = useMutation(UPDATE_SPOTTEDLIST);
 
   var flickr = new Flickr(process.env.REACT_APP_FLICKR_API_KEY);
   flickr.photos
@@ -29,9 +35,6 @@ const Card = (props) => {
   const handleWatchList = async () => {
     // bird gets added to db
     try {
-      // the data here is the id that comes back - take the data and await it later and add it into the profile
-      // look at the cart code from week 22 folder 23
-      // adding a list of id's for birds in the database to the user's profile - once i'm on the profile page, need to get all the id's in the user's list and query the db for all birds with that id...
       const { data } = await addBird({
         variables: {
           sciName: props.sciName,
@@ -39,31 +42,62 @@ const Card = (props) => {
           imgSrc: imageSrc,
         },
       });
+      console.log(data.addBird._id);
       setWatchListBird(data.addBird._id);
-      // updateWatchList(data.addBird._id);
     } catch (error) {
       console.log(error);
     }
-
-    updateProfileWatchList();
   };
 
-  const updateProfileWatchList = async () => {
-    // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+  useEffect(() => {
+    if (!!watchListBird) {
+      const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    if (!token) {
-      return false;
+      if (!token) {
+        return false;
+      }
+      try {
+        const { watchListData } = updateWatchList({
+          variables: { birdData: watchListBird },
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
+  }, [watchListBird]);
+
+  const handleSpottedList = async () => {
     try {
-      const { newData } = await updateWatchList({
-        variables: { birdData: watchListBird },
+      const { data } = await addBird({
+        variables: {
+          sciName: props.sciName,
+          comName: props.comName,
+          imgSrc: imageSrc,
+        },
       });
-      console.log(newData);
-    } catch (err) {
-      console.error(err);
+      setSpottedListBird(data.addBird._id);
+      console.log(data.addBird._id);
+    } catch (error) {
+      console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (!!spottedListBird) {
+      const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+      if (!token) {
+        return false;
+      }
+      try {
+        const { spottedListData } = updateSpottedList({
+          variables: { birdData: spottedListBird },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  }, [spottedListBird]);
 
   return (
     <div className="card birdCard" style={{ width: 18 + "rem" }}>
@@ -75,7 +109,9 @@ const Card = (props) => {
           <button className="add-button" onClick={handleWatchList}>
             Add to Watch List
           </button>
-          <button className="add-button">Add to Spotted List</button>
+          <button className="add-button" onClick={handleSpottedList}>
+            Add to Spotted List
+          </button>
         </div>
       </div>
     </div>
