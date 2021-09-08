@@ -28,15 +28,17 @@ export const ADD_BIRD = gql`
   }
 `;
 
-// truly have no idea how to word this??
 export const UPDATE_WATCHLIST = gql`
-  mutation updateWatchList($birdData: String!) {
-    updateWatchList(birdData: $birdData) {
+  mutation updateWatchList(
+    $sciName: String!
+    $comName: String!
+    $imgSrc: String!
+  ) {
+    updateWatchList(sciName: $sciName, comName: $comName, imgSrc: $imgSrc) {
       _id
       name
       email
       watchList {
-        _id
         sciName
         comName
         imgSrc
@@ -46,13 +48,16 @@ export const UPDATE_WATCHLIST = gql`
 `;
 
 export const UPDATE_SPOTTEDLIST = gql`
-  mutation updateSpottedList($birdData: String!) {
-    updateSpottedList(birdData: $birdData) {
+  mutation updateSpottedList(
+    $sciName: String!
+    $comName: String!
+    $imgSrc: String!
+  ) {
+    updateSpottedList(sciName: $sciName, comName: $comName, imgSrc: $imgSrc) {
       _id
       name
       email
       spottedList {
-        _id
         sciName
         comName
         imgSrc
