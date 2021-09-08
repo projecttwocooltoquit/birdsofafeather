@@ -42,6 +42,7 @@ const typeDefs = gql`
     removeProfile: Profile
     addBird(sciName: String!, comName: String!, imgSrc: String!): Birds
     updateWatchList(birdData: String!): Profile
+    updateSpottedList(birdData: String!): Profile
   }
 `;
 
