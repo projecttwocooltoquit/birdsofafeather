@@ -317,7 +317,7 @@ const Home = () => {
       <video id="videobg" autoPlay loop muted>
         <source src={forest} type="video/mp4" />
       </video>
-      <div className="banner name-container">
+      <div className="homebanner name-container">
         <h1>Welcome!</h1>
         <p>You are signed in!</p>
       </div>
