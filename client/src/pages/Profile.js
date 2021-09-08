@@ -46,13 +46,13 @@ const Profile = () => {
         <source src={purplebird} type="video/mp4" />
       </video>
       <div className="name-container">
-        <h1>Welcome back, {name}!</h1>
+        <h1>Welcome back, {name}.</h1>
         <p>
           You can manage your Watch List and Spotted List below. Happy birding!
         </p>
       </div>
       <div className="watch-list">
-        <h1>Your Watch List:</h1>
+        <h1>Your Watch List 🔭</h1>
         <Carousel responsive={responsive}>
           {userWatchList.map((bird, index) => (
             <Card
@@ -65,7 +65,7 @@ const Profile = () => {
         </Carousel>
       </div>
       <div className="spotted-list">
-        <h1>Your Spotted List:</h1>
+        <h1>Your Spotted List ✔️</h1>
         <Carousel responsive={responsive}>
           {userWatchList.map((bird, index) => (
             <Card

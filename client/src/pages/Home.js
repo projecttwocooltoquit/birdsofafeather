@@ -4,6 +4,7 @@ import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import forest from "./images/forest.mp4";
+import Modal from "react-modal";
 
 // import { ApolloProvider, useMutation } from "@apollo/client";
 
