@@ -62,6 +62,10 @@
   color: white;
 }
 
+.homebanner {
+  margin-right: 10%;
+}
+
 .flexWrap {
   display: flex;
   align-items: center;
