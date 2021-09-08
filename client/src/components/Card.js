@@ -73,7 +73,11 @@ const Card = (props) => {
   if (props.listType === "watch") {
     return (
       <div className="card birdCard" style={{ width: 18 + "rem" }}>
-        <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
+        <img
+          className="card-img-top bird-img"
+          src={imageSrc}
+          alt={props.comName}
+        />
         <div className="card-body">
           <h5 className="card-title">{props.comName}</h5>
           <p className="card-text">{props.sciName}</p>
@@ -89,7 +93,11 @@ const Card = (props) => {
   } else if (props.listType === "spotted") {
     return (
       <div className="card birdCard" style={{ width: 18 + "rem" }}>
-        <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
+        <img
+          className="card-img-top bird-img"
+          src={imageSrc}
+          alt={props.comName}
+        />
         <div className="card-body">
           <h5 className="card-title">{props.comName}</h5>
           <p className="card-text">{props.sciName}</p>
@@ -104,7 +112,11 @@ const Card = (props) => {
   } else {
     return (
       <div className="card birdCard" style={{ width: 18 + "rem" }}>
-        <img className="card-img-top bird-img" src={imageSrc} alt="A bird" />
+        <img
+          className="card-img-top bird-img"
+          src={imageSrc}
+          alt={props.comName}
+        />
         <div className="card-body">
           <h5 className="card-title">{props.comName}</h5>
           <p className="card-text">{props.sciName}</p>
