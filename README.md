@@ -4,6 +4,8 @@ Built by Team Mothership Squad Goals
 
 A simple web application that allows users to view birds and keep track of birds that they wish to see. A few screenshots of the website can be found below: 
 
+![Screen Shot 2021-09-09 at 4 13 59 PM](https://user-images.githubusercontent.com/78391731/132763543-67e005a6-ff5f-4305-bec8-4df20c430f28.png)
+![Screen Shot 2021-09-09 at 4 16 16 PM](https://user-images.githubusercontent.com/78391731/132763807-8c61c92a-4eec-4067-b2f0-327792e707a7.png)
 
 # Technologies Used
 
