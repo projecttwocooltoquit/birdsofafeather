@@ -62,6 +62,25 @@
   color: white;
 }
 
+.homebanner {
+  font-size: 60px;
+  color: var(--colorFive);
+  width: 55%;
+  margin-left: 20%;
+  padding: 2%;
+  display: flex;
+  background-image: linear-gradient(
+    to bottom,
+    var(--colorThi),
+    var(--colorSec)
+  );
+  align-content: center;
+  justify-content: center;
+  border: solid green;
+  box-shadow: 0 0px 12px 6px gold;
+  text-align: center;
+}
+
 .menuPosition {
   color: white;
   text-align: center;

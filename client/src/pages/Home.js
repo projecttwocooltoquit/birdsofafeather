@@ -4,7 +4,7 @@ import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import forest from "./images/forest.mp4";
-
+import Typewriter from "typewriter-effect";
 // import { ApolloProvider, useMutation } from "@apollo/client";
 
 const API_KEY = process.env.REACT_APP_EBIRD_API_KEY;
@@ -320,9 +320,23 @@ const Home = () => {
       <video id="videobg" autoPlay loop muted>
         <source src={forest} type="video/mp4" />
       </video>
+
       <div className="container">
       <div className="row">
         <section className="menuPosition column">
+
+      <div className="homebanner">
+        <Typewriter
+          onInit={(typewriter) => {
+            typewriter
+              .typeString("Birds of a Feather, Flock Together!")
+              .pauseFor(1500)
+              .deleteAll()
+              .typeString("Welcome!")
+              .start();
+          }}
+        />
+      </div>
           <h4>Select a state and county to begin.</h4>
           <p>
             To add a bird you've seen to your profile, click "Add to Spotted

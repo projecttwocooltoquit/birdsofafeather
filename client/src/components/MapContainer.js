@@ -1,6 +1,9 @@
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import React, { useState, useEffect } from "react";
 import Spiderfy from "./Spiderfy";
+import MarkerClusterer, {
+  MarkerClustererOptions,
+} from "@googlemaps/markerclustererplus";
 
 const MapContainer = (props) => {
   const mapStyles = {
@@ -49,7 +52,7 @@ const MapContainer = (props) => {
         ))}
         <InfoWindow visible={showingInfoWindow} position={clickedMarker}>
           <div>
-            <h4>{clickedBird}</h4>
+            <p>{clickedBird}</p>
           </div>
         </InfoWindow>
       </Map>

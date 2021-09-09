@@ -7,7 +7,6 @@ const resolvers = {
     profiles: async () => {
       return Profile.find();
     },
-
     profile: async (parent, { profileId }) => {
       return Profile.findOne({ _id: profileId });
     },
@@ -20,6 +19,9 @@ const resolvers = {
     },
     birds: async () => {
       return Birds.find();
+    },
+    bird: async (parent, { birdId }) => {
+      return Birds.findOne({ _id: birdId });
     },
   },
 
@@ -72,31 +74,39 @@ const resolvers = {
 
       return bird;
     },
-    updateWatchList: async (parent, { birdData }, context) => {
+    updateWatchList: async (parent, { sciName, comName, imgSrc }, context) => {
       if (context.user) {
         const updatedUser = await Profile.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { watchList: birdData } },
+          { $push: { watchList: { sciName, comName, imgSrc } } },
           { new: true }
         );
 
         return updatedUser;
       }
 
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError(
+        "You need to be logged in to edit your lists!"
+      );
     },
-    updateSpottedList: async (parent, { birdData }, context) => {
+    updateSpottedList: async (
+      parent,
+      { sciName, comName, imgSrc },
+      context
+    ) => {
       if (context.user) {
         const updatedUser = await Profile.findByIdAndUpdate(
           { _id: context.user._id },
-          { $push: { spottedList: birdData } },
+          { $push: { spottedList: { sciName, comName, imgSrc } } },
           { new: true }
         );
 
         return updatedUser;
       }
 
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError(
+        "You need to be logged in to edit your lists!"
+      );
     },
   },
 };

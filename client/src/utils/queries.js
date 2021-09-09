@@ -21,8 +21,17 @@ export const QUERY_SINGLE_PROFILE = gql`
 export const QUERY_ME = gql`
   query me {
     me {
-      _id
       name
+      watchList {
+        sciName
+        comName
+        imgSrc
+      }
+      spottedList {
+        sciName
+        comName
+        imgSrc
+      }
     }
   }
 `;
@@ -30,6 +39,16 @@ export const QUERY_ME = gql`
 export const QUERY_BIRDS = gql`
   query allBirds {
     Birds {
+      _id
+      sciName
+      comName
+    }
+  }
+`;
+
+export const QUERY_ONE_BIRD = gql`
+  query singleBird($birdId: ID!) {
+    bird(birdId: $birdId) {
       _id
       sciName
       comName
