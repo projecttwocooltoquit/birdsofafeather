@@ -4,40 +4,38 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
-    <nav className="navbar navbar-expand homeNav">
-      <Link className="navbar-brand" to="/">
-        Birds of a Feather
-      </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
-
-      <div className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/login">
-              Log In
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/profile">
-              Profile
-            </Link>
-          </li>
-        </ul>
+    <nav className="navbar navbar-expand-lg navbar-dark homeNav">
+      <div className="container ml-4">
+        <Link to="/" className="navbar-brand">
+          Birds of a feather
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navmenu">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">
+                Log In
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/signup" className="nav-link">
+                Signup
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/profile" className="nav-link">
+                Profile
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );
