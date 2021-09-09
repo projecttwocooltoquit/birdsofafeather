@@ -85,7 +85,9 @@ const resolvers = {
         return updatedUser;
       }
 
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError(
+        "You need to be logged in to edit your lists!"
+      );
     },
     updateSpottedList: async (
       parent,
@@ -102,7 +104,9 @@ const resolvers = {
         return updatedUser;
       }
 
-      throw new AuthenticationError("You need to be logged in!");
+      throw new AuthenticationError(
+        "You need to be logged in to edit your lists!"
+      );
     },
   },
 };

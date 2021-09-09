@@ -52,7 +52,7 @@ const MapContainer = (props) => {
         ))}
         <InfoWindow visible={showingInfoWindow} position={clickedMarker}>
           <div>
-            <h4>{clickedBird}</h4>
+            <p>{clickedBird}</p>
           </div>
         </InfoWindow>
       </Map>
