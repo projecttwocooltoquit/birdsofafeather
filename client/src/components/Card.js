@@ -5,16 +5,13 @@ import {
   UPDATE_SPOTTEDLIST,
 } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
-import Auth from "../utils/auth";
 
 const Flickr = require("flickr-sdk");
 
 const Card = (props) => {
   const [imageSrc, setImageSrc] = useState("");
-  const [watchListBird, setWatchListBird] = useState("");
-  const [spottedListBird, setSpottedListBird] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
-  const [addBird, { error }] = useMutation(ADD_BIRD);
   const [updateWatchList] = useMutation(UPDATE_WATCHLIST);
   const [updateSpottedList] = useMutation(UPDATE_SPOTTEDLIST);
 
@@ -41,6 +38,7 @@ const Card = (props) => {
           imgSrc: imageSrc,
         },
       });
+
       alert(`${props.comName} has been added to your Watch List!`);
     } catch (error) {
       alert(error);
@@ -56,6 +54,7 @@ const Card = (props) => {
           imgSrc: imageSrc,
         },
       });
+      setShowModal(true);
       alert(`${props.comName} has been added to your Spotted List!`);
     } catch (error) {
       alert(error);
