@@ -4,7 +4,6 @@ import MapContainer from "../components/MapContainer";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import forest from "./images/forest.mp4";
-import Modal from "react-modal";
 
 // import { ApolloProvider, useMutation } from "@apollo/client";
 
@@ -360,9 +359,6 @@ const Home = () => {
                 </option>
               ))}
             </select>
-            <button id="go-btn" type="button" className="btn btn-dark">
-              Go
-            </button>
           </div>
         </section>
         <section className="mapPosition">

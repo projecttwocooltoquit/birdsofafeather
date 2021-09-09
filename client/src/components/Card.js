@@ -32,7 +32,7 @@ const Card = (props) => {
       console.error(err);
     });
 
-  const handleWatchList = async () => {
+  const handleWatchListAdd = async () => {
     try {
       const { data } = await updateWatchList({
         variables: {
@@ -43,11 +43,11 @@ const Card = (props) => {
       });
       alert(`${props.comName} has been added to your Watch List!`);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
-  const handleSpottedList = async () => {
+  const handleSpottedListAdd = async () => {
     try {
       const { data } = await updateSpottedList({
         variables: {
@@ -58,7 +58,7 @@ const Card = (props) => {
       });
       alert(`${props.comName} has been added to your Spotted List!`);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -121,10 +121,10 @@ const Card = (props) => {
           <h5 className="card-title">{props.comName}</h5>
           <p className="card-text">{props.sciName}</p>
           <div className="button-container">
-            <button className="add-button" onClick={handleWatchList}>
+            <button className="add-button" onClick={handleWatchListAdd}>
               Add to Watch List
             </button>
-            <button className="add-button" onClick={handleSpottedList}>
+            <button className="add-button" onClick={handleSpottedListAdd}>
               Add to Spotted List
             </button>
           </div>
