@@ -17,12 +17,12 @@ const Profile = () => {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,
-      slidesToSlide: 3, // optional, default to 1.
+      slidesToSlide: 2, // optional, default to 1.
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
-      slidesToSlide: 2, // optional, default to 1.
+      slidesToSlide: 1, // optional, default to 1.
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
@@ -43,7 +43,7 @@ const Profile = () => {
         </p>
       </div>
       <div className="watch-list">
-        <Carousel responsive={responsive}>
+        <Carousel responsive={responsive} containerClass="carousel-container" itemClass="profile-carousel-card-extra">
           <Card sciName="turdus migratorious" comName="robin" />
           <Card sciName="turdus migratorious" comName="robin" />
           <Card sciName="turdus migratorious" comName="robin" />
@@ -56,7 +56,7 @@ const Profile = () => {
         </Carousel>
       </div>
       <div className="spotted-list">
-        <Carousel responsive={responsive}>
+        <Carousel responsive={responsive} containerClass="carousel-container" itemClass="profile-carousel-card-extra">
           <Card sciName="turdus migratorious" comName="robin" />
           <Card sciName="turdus migratorious" comName="robin" />
           <Card sciName="turdus migratorious" comName="robin" />

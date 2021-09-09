@@ -37,6 +37,7 @@ function Signup(props) {
       </video>
 
       <h2 className="card-header loginHeader">Signup</h2>
+      <div className="card-body login-body">
       <form className="signup-form" onSubmit={handleFormSubmit}>
         <div className="flex-row my-2">
           <label className="labelExtra" htmlFor="name">
@@ -87,7 +88,7 @@ function Signup(props) {
           </button>
         </div>
       </form>
-
+      </div>
       <div className="loginLink">
         <Link to="/login" className="labelExtra">
           ← Go to Login
