@@ -16,7 +16,7 @@ const Profile = () => {
   const [userSpottedList, setUserSpottedList] = useState([]);
 
   useEffect(() => {
-    if (!loading) {
+    if (data) {
       setName(data.me.name);
       setUserWatchList(data.me.watchList);
       setUserSpottedList(data.me.spottedList);
