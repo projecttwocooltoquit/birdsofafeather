@@ -6,6 +6,7 @@ import {
   REMOVE_FROM_SPOTTEDLIST,
 } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
+
 // for flickr api call
 const Flickr = require("flickr-sdk");
 
@@ -48,7 +49,7 @@ const Card = (props) => {
       // needs replaced with modal - no time
       alert(`${props.comName} has been added to your Watch List!`);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 
@@ -64,7 +65,7 @@ const Card = (props) => {
       });
       alert(`${props.comName} has been added to your Spotted List!`);
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 

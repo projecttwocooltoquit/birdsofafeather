@@ -1,34 +1,28 @@
 {
-    "name": "project-three",
-    "version": "1.0.0",
-    "description": "",
-    "main": "server/server.js",
-    "scripts": {
-        "start": "node server/server.js",
-        "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-        "install": "cd server && npm i && cd ../client && npm i",
-        "seed": "cd server && npm run seed",
-        "build": "cd client && npm run build"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "concurrently": "^5.1.0"
-    },
-    "dependencies": {
-        "@googlemaps/markerclustererplus": "^1.2.0",
-        "bootstrap": "^5.1.0",
-        "dotenv": "^10.0.0",
-        "flickr-sdk": "^3.10.0",
-        "google-maps-react": "^2.0.6",
-        "graphql": "^15.5.0",
-        "npm-overlapping-marker-spiderfier": "^1.0.3",
-        "overlapping-marker-spiderfier": "^1.1.4",
-        "react-bootstrap": "^2.0.0-beta.6",
-        "react-loader-spinner": "^4.0.0",
-        "react-modal": "^3.14.3",
-        "react-multi-carousel": "^2.6.5",
-        "typewriter-effect": "^2.18.0"
-    }
+  "name": "project-three",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "flickr-sdk": "^3.10.0",
+    "google-maps-react": "^2.0.6",
+    "graphql": "^15.5.0",
+    "react-loader-spinner": "^4.0.0",
+    "react-multi-carousel": "^2.6.5",
+    "typewriter-effect": "^2.18.0"
+  }
 }
