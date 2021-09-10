@@ -37,7 +37,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-function App() {
+function App(props) {
   // loading Spinner
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
