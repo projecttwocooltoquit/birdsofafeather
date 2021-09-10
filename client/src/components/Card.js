@@ -69,6 +69,22 @@ const Card = (props) => {
     }
   };
 
+  // adds selected bird to user's spotted list
+  const handleProfileSpottedListAdd = async () => {
+    try {
+      const { data } = await updateSpottedList({
+        variables: {
+          sciName: props.sciName,
+          comName: props.comName,
+          imgSrc: imageSrc,
+        },
+      });
+      alert(`${props.comName} has been added to your Spotted List!`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   // removes bird from user's watch list
   const handleWatchListRemove = async () => {
     try {
@@ -105,7 +121,7 @@ const Card = (props) => {
           bird: props.sciName,
         },
       });
-      handleSpottedListAdd();
+      handleProfileSpottedListAdd();
       window.location.reload();
     } catch (error) {
       console.log(error);
