@@ -37,7 +37,6 @@ export const UPDATE_WATCHLIST = gql`
     updateWatchList(sciName: $sciName, comName: $comName, imgSrc: $imgSrc) {
       _id
       name
-      email
       watchList {
         sciName
         comName
@@ -56,7 +55,34 @@ export const UPDATE_SPOTTEDLIST = gql`
     updateSpottedList(sciName: $sciName, comName: $comName, imgSrc: $imgSrc) {
       _id
       name
-      email
+      spottedList {
+        sciName
+        comName
+        imgSrc
+      }
+    }
+  }
+`;
+
+export const REMOVE_FROM_WATCHLIST = gql`
+  mutation removeFromWatchList($bird: String!) {
+    removeFromWatchList(bird: $bird) {
+      _id
+      name
+      watchList {
+        sciName
+        comName
+        imgSrc
+      }
+    }
+  }
+`;
+
+export const REMOVE_FROM_SPOTTEDLIST = gql`
+  mutation removeFromSpottedList($bird: String!) {
+    removeFromSpottedList(bird: $bird) {
+      _id
+      name
       spottedList {
         sciName
         comName
