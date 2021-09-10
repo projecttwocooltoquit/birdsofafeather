@@ -221,70 +221,43 @@ const Home = () => {
     },
   ];
 
+  // responsive info for carousel
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 3,
-      slidesToSlide: 2, // optional, default to 1.
-      // partialVisibilityGutter: 40
+      slidesToSlide: 2,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
       items: 2,
-      slidesToSlide: 1, // optional, default to 1.
-      // partialVisibilityGutter: 30
+      slidesToSlide: 1,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 1,
-      slidesToSlide: 1, // optional, default to 1.
-      // partialVisibilityGutter: 30
+      slidesToSlide: 1,
     },
   };
 
-  // states that listen to user's choices
-  const [counties, setCounties] = useState([]);
+  // holds user's state choice from state dropdown
   const [userStateChoice, setUserStateChoice] = useState("");
+  // holds the counties generated from ebird api call based on selected state
+  const [counties, setCounties] = useState([]);
+  // holds the user's county choice from county dropdown - this is the county code not the county name
   const [userCountyChoice, setUserCountyChoice] = useState("");
+  // all birds spotted at that location from ebird api call
   const [locationBirds, setLocationBirds] = useState([]);
 
   const handleUserStateChoice = (e) => {
+    // grabs value from dropdown selection and updates state
     setUserStateChoice(e.target.value);
   };
 
   const handleUserCountyChoice = (e) => {
+    // grabs value from dropdown selection and updates state
     setUserCountyChoice(e.target.value);
   };
-
-  // takes in user's county choice, makes ebird API call to generate birds spotted in that area
-  useEffect(() => {
-    if (!!userCountyChoice) {
-      // Your useEffect code here to be run on update
-      let myHeaders = new Headers();
-      myHeaders.append("X-eBirdApiToken", API_KEY);
-
-      let requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow",
-      };
-
-      fetch(
-        `https://api.ebird.org/v2/data/obs/${userCountyChoice}/recent?maxResults=10`,
-        requestOptions
-      )
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          setLocationBirds(data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [userCountyChoice]);
-
   // takes in user's state choice, makes ebird API call to generate counties and county code values
   useEffect(() => {
     if (!!userStateChoice) {
@@ -315,6 +288,35 @@ const Home = () => {
     }
   }, [userStateChoice]);
 
+  // takes in user's county choice, makes ebird API call to generate birds spotted in that area
+  useEffect(() => {
+    if (!!userCountyChoice) {
+      // Your useEffect code here to be run on update
+      let myHeaders = new Headers();
+      myHeaders.append("X-eBirdApiToken", API_KEY);
+
+      let requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
+
+      fetch(
+        `https://api.ebird.org/v2/data/obs/${userCountyChoice}/recent?maxResults=10`,
+        requestOptions
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setLocationBirds(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }, [userCountyChoice]);
+
   return (
     <main>
       <video id="videobg" autoPlay loop muted>
@@ -324,8 +326,8 @@ const Home = () => {
         <Typewriter
           onInit={(typewriter) => {
             typewriter
-              .typeString("Birds of a Feather, Flock Together!")
-              .pauseFor(1500)
+              .typeString("Birds of a Feather, flock together!")
+              .pauseFor(1000)
               .deleteAll()
               .typeString("Welcome!")
               .start();
@@ -337,13 +339,13 @@ const Home = () => {
           <section className="menuPosition column">
             <h4>Select a state and county to begin.</h4>
             <p>
-              To add a bird you've seen to your profile, click "Add to Spotted
-              List"
+              See a bird you want to keep an eye out for? Click "Add to Watch
+              List".
             </p>
             <p>
-              If you see a bird you'd like to keep an eye out for, you can add
-              that bird to your Watch List by clicking "Add to Watch List"
+              To add a bird you've already seen, click "Add to Spotted List".
             </p>
+            <p>You can manage your lists on your profile page!</p>
             <div className="container">
               <select
                 id="state-dropdwn"
@@ -384,14 +386,13 @@ const Home = () => {
       <br></br>
       <br></br>
       <br></br>
-      {/* THIS CONTAINER FOR THE CAROUSEL CANNOT BE FLEX */}
       <div className="container">
         <Carousel
           swipeable={false}
           draggable={false}
           showDots={true}
           responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
+          ssr={true}
           infinite={true}
           autoPlaySpeed={1000}
           keyBoardControl={true}

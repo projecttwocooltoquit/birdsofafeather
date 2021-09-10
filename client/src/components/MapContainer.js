@@ -1,9 +1,5 @@
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from "google-maps-react";
 import React, { useState, useEffect } from "react";
-import Spiderfy from "./Spiderfy";
-import MarkerClusterer, {
-  MarkerClustererOptions,
-} from "@googlemaps/markerclustererplus";
 
 const MapContainer = (props) => {
   const mapStyles = {
@@ -14,19 +10,23 @@ const MapContainer = (props) => {
     boxShadow: "0 0px 12px 6px gold",
   };
 
-  // state to contain coordinates to center the map
+  // center of the map
   const [coordinates, setCoordinates] = useState({ lat: 10, lng: 10 });
+  // info window showing y/n
   const [showingInfoWindow, setShowingInfoWindow] = useState(false);
+  // which marker was clicked on by user
   const [clickedMarker, setClickedMarker] = useState({ lat: 10, lng: 10 });
+  // bird selected by clicked marker
   const [clickedBird, setClickedBird] = useState("");
 
-  // sets the coordinates of the center to whatever the center coordinate that is passed into the component
+  // sets the coordinates for the center of the map based on the props of the map - runs when props.center changes
   useEffect(() => {
     if (props.center) {
       setCoordinates({ lat: props.center.lat, lng: props.center.lng });
     }
   }, [props.center]);
 
+  // once user clicks on a marker, sets the state for the following states
   const onMarkerClick = (e) => {
     setClickedBird(e.value);
     setClickedMarker(e.position);
