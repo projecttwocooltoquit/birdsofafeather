@@ -299,3 +299,39 @@
     margin-bottom: 100%;
   }
 }
+
+@media (max-width: 415px) {
+  .menuPosition {
+    width: 100%;
+    margin-bottom: 10%;
+    height: 350px;
+  }
+  .mapPosition {
+    width: 100%;
+    margin-bottom: 100%;
+  }
+}
+
+@media (max-width: 281px) {
+  .menuPosition {
+    width: 100%;
+    margin-bottom: 20%;
+    height: 400px;
+  }
+  .mapPosition {
+    width: 100%;
+    margin-bottom: 100%;
+  }
+}
+
+@media (max-width: 541px) {
+  .menuPosition {
+    width: 100%;
+    margin-bottom: 10%;
+    height: 350px;
+  }
+  .mapPosition {
+    width: 100%;
+    margin-bottom: 100%;
+  }
+}
