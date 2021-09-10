@@ -5,7 +5,7 @@
   --colorFour: rgb(90, 124, 92);
   --colorFive: rgb(228, 224, 205);
 }
-
+/* --------------------------------------------------------------- */
 .App {
   text-align: center;
 }
@@ -44,7 +44,7 @@
     transform: rotate(360deg);
   }
 }
-
+/* homepage-------------------------------------------------------------------------- */
 .homeNav {
   background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
   color: var(--colorFive);
@@ -63,21 +63,25 @@
 }
 
 .homebanner {
-  font-size: 60px;
+  font-size: xx-large;
+  font-weight: bold;
   color: var(--colorFive);
-  width: 55%;
-  margin-left: 20%;
-  padding: 2%;
+  height: fit-content;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 1%;
+  padding: 1.5%;
   display: flex;
   background-image: linear-gradient(
     to bottom,
-    var(--colorThi),
-    var(--colorSec)
+    var(--colorSec),
+    var(--colorFour)
   );
   align-content: center;
   justify-content: center;
-  border: solid green;
-  box-shadow: 0 0px 12px 6px gold;
+  border: solid gold;
+  border-radius: 30px;
+  box-shadow: 0 0px 20px 8px var(--colorSec);
   text-align: center;
 }
 
@@ -96,8 +100,8 @@
   align-content: center;
   border: solid green;
   box-shadow: 0 0px 12px 6px gold;
-  
-  float:left
+
+  float: left;
 }
 
 .mapPosition {
@@ -108,6 +112,13 @@
   position: relative;
 }
 
+.home-carousel-card-extra {
+  max-width: 230px;
+  min-width: 230px;
+  margin-left: 2%;
+}
+
+/* card components------------------------------------------ */
 .birdCard {
   background-image: linear-gradient(
     to bottom,
@@ -120,19 +131,6 @@
   box-shadow: 0 0px 16px 3px var(--colorThi);
   margin: 3%;
   margin-left: 15%;
-}
-
-.home-carousel-card-extra {
-  max-width: 230px;
-  min-width: 230px;
-  margin-left: 2%;
-}
-
-.profile-carousel-card-extra {
-  max-width: 230px;
-  min-width: 230px;
-  margin-left: 3%;
-  margin-right: 3%;
 }
 
 .bird-img {
@@ -159,85 +157,12 @@
   cursor: pointer;
 }
 
-.goSomewhere {
-  color: var(--colorFive);
-  font-family: sans-serif;
-  font-weight: bolder;
-  font-size: large;
-  padding: 0.5rem;
-  background-color: var(--colorSec);
-  border-width: 1.5px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: var(--colorMain);
-}
-
-.goSomewhere:hover {
-  background-color: var(--colorThi);
-  color: black;
-}
-
-.loginHeader {
-  background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
-  color: white;
-}
-
-.loginContainer {
-  background-color: var(--colorFive);
-  width: 35%;
-  height: 50%;
-  margin: auto;
-  margin-top: 7.5%;
-  border-style: solid;
-  border-color: var(--colorThi);
-  box-shadow: 0 0px 24px 10px var(--colorSec);
-}
-
-.login-body {
-  background-color: var(--colorFive);
-  text-align: center;
-}
-
-.labelExtra {
-  margin-top: 2%;
+/* profile page-------------------------------------------------- */
+.profile-carousel-card-extra {
+  max-width: 230px;
+  min-width: 230px;
   margin-left: 3%;
-  color: black;
-}
-
-.loginLink {
-  margin-top: 3%;
-  margin-bottom: 2%;
-  color: black;
-}
-
-.inputExtra {
-  margin-left: 1%;
-  margin-right: 1%;
-  width: 70%;
-  border-style: solid;
-  border-color: var(--colorSec);
-}
-
-.loginButton {
-  width: 70%;
-  color: var(--colorFive);
-  font-family: sans-serif;
-  font-weight: bolder;
-  font-size: large;
-  padding: 0.5rem;
-  margin-top: 5%;
-  margin-left: 15%;
-  margin-right: 15%;
-  background-color: var(--colorSec);
-  border-width: 3px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: var(--colorThi);
-  cursor: pointer;
-}
-
-.loginButton:hover {
-  box-shadow: 0 0px 8px 6px var(--colorFour);
+  margin-right: 3%;
 }
 
 .profile-page {
@@ -296,6 +221,89 @@
   text-align: center;
 }
 
+/* ------------------------------------ */
+
+.goSomewhere {
+  color: var(--colorFive);
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: large;
+  padding: 0.5rem;
+  background-color: var(--colorSec);
+  border-width: 1.5px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--colorMain);
+}
+
+.goSomewhere:hover {
+  background-color: var(--colorThi);
+  color: black;
+}
+/* login page---------------------------------------------------------------------------------- */
+.loginHeader {
+  background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
+  color: white;
+}
+
+.loginContainer {
+  background-color: var(--colorFive);
+  width: 35%;
+  height: 50%;
+  margin: auto;
+  margin-top: 7.5%;
+  border-style: solid;
+  border-color: var(--colorThi);
+  box-shadow: 0 0px 24px 10px var(--colorSec);
+}
+
+.login-body {
+  background-color: var(--colorFive);
+  text-align: center;
+}
+
+.labelExtra {
+  margin-top: 2%;
+  margin-left: 3%;
+  color: black;
+}
+
+.loginLink {
+  margin-top: 3%;
+  margin-bottom: 2%;
+  color: black;
+}
+
+.loginButton {
+  width: 70%;
+  color: var(--colorFive);
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: large;
+  padding: 0.5rem;
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-right: 15%;
+  background-color: var(--colorSec);
+  border-width: 3px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: var(--colorThi);
+  cursor: pointer;
+}
+
+.loginButton:hover {
+  box-shadow: 0 0px 8px 6px var(--colorFour);
+}
+.inputExtra {
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 70%;
+  border-style: solid;
+  border-color: var(--colorSec);
+}
+
+/* background------------------------------------------------- */
 #videobg {
   position: fixed;
   z-index: -1;
@@ -306,7 +314,7 @@
   object-fit: cover;
   transform: translate(-50%, -50%);
 }
-
+/* media queries------------------------------------------- */
 @media (min-aspect-ratio: 16/9) {
   #videobg {
     width: 100%;
@@ -324,5 +332,17 @@
 @media (max-width: 374px) {
   #videobg {
     display: none;
+  }
+}
+
+@media (max-width: 376px) {
+  .menuPosition {
+    width: 100%;
+    margin-bottom: 10%;
+    height: 350px;
+  }
+  .mapPosition {
+    width: 100%;
+    margin-bottom: 100%;
   }
 }
