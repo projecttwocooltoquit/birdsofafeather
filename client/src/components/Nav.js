@@ -30,9 +30,9 @@ const Nav = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/profile" className="nav-link">
+              <a href="/profile" className="nav-link">
                 Profile
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

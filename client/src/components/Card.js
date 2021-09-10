@@ -44,7 +44,7 @@ const Card = (props) => {
 
       alert(`${props.comName} has been added to your Watch List!`);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
@@ -60,7 +60,7 @@ const Card = (props) => {
       setShowModal(true);
       alert(`${props.comName} has been added to your Spotted List!`);
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
   };
 
@@ -90,6 +90,20 @@ const Card = (props) => {
     }
   };
 
+  const moveToSpottedList = async () => {
+    try {
+      const { data } = await removeFromWatchList({
+        variables: {
+          bird: props.sciName,
+        },
+      });
+      handleSpottedListAdd();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   if (props.listType === "watch") {
     return (
       <div className="card birdCard" style={{ width: 18 + "rem" }}>
@@ -105,7 +119,9 @@ const Card = (props) => {
             <button className="add-button" onClick={handleWatchListRemove}>
               Remove
             </button>
-            <button className="add-button">Spotted!</button>
+            <button className="add-button" onClick={moveToSpottedList}>
+              Spotted!
+            </button>
           </div>
         </div>
       </div>
