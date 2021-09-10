@@ -1,6 +1,7 @@
 import React from "react";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
+
 const Loading = () => {
   return (
     <div align="center">
@@ -9,7 +10,7 @@ const Loading = () => {
         color="green"
         height={200}
         width={200}
-        timeout={3000} //3 secs
+        timeout={2000} //3 secs
       />
     </div>
   );

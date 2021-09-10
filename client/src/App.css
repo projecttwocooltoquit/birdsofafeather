@@ -5,45 +5,7 @@
   --colorFour: rgb(90, 124, 92);
   --colorFive: rgb(228, 224, 205);
 }
-/* --------------------------------------------------------------- */
-.App {
-  text-align: center;
-}
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: white;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 /* homepage-------------------------------------------------------------------------- */
 .homeNav {
   background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));
@@ -221,25 +183,16 @@
   text-align: center;
 }
 
-/* ------------------------------------ */
-
-.goSomewhere {
+.prof-link {
   color: var(--colorFive);
-  font-family: sans-serif;
-  font-weight: bolder;
-  font-size: large;
-  padding: 0.5rem;
-  background-color: var(--colorSec);
-  border-width: 1.5px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: var(--colorMain);
+  font-weight: bold;
 }
 
-.goSomewhere:hover {
-  background-color: var(--colorThi);
-  color: black;
+.prof-link:hover {
+  color: white;
+  text-decoration: none;
 }
+
 /* login page---------------------------------------------------------------------------------- */
 .loginHeader {
   background-image: linear-gradient(to left, var(--colorMain), var(--colorSec));

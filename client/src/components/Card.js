@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   UPDATE_WATCHLIST,
   UPDATE_SPOTTEDLIST,
@@ -6,18 +6,20 @@ import {
   REMOVE_FROM_SPOTTEDLIST,
 } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
-
+// for flickr api call
 const Flickr = require("flickr-sdk");
 
 const Card = (props) => {
+  // image src for card image
   const [imageSrc, setImageSrc] = useState("");
-  const [showModal, setShowModal] = useState(false);
 
+  // defining mutations
   const [updateWatchList] = useMutation(UPDATE_WATCHLIST);
   const [updateSpottedList] = useMutation(UPDATE_SPOTTEDLIST);
   const [removeFromWatchList] = useMutation(REMOVE_FROM_WATCHLIST);
   const [removeFromSpottedList] = useMutation(REMOVE_FROM_SPOTTEDLIST);
 
+  // flickr API call
   var flickr = new Flickr(process.env.REACT_APP_FLICKR_API_KEY);
   flickr.photos
     .search({
@@ -25,6 +27,7 @@ const Card = (props) => {
     })
     .then(function (res) {
       setImageSrc(
+        // creates image src link from api response
         `https://live.staticflickr.com/${res.body.photos.photo[1].server}/${res.body.photos.photo[1].id}_${res.body.photos.photo[1].secret}_w.jpg`
       );
     })
@@ -32,6 +35,7 @@ const Card = (props) => {
       console.error(err);
     });
 
+  // adds selected bird to user's watch list
   const handleWatchListAdd = async () => {
     try {
       const { data } = await updateWatchList({
@@ -41,13 +45,14 @@ const Card = (props) => {
           imgSrc: imageSrc,
         },
       });
-
+      // needs replaced with modal - no time
       alert(`${props.comName} has been added to your Watch List!`);
     } catch (error) {
       console.log(error);
     }
   };
 
+  // adds selected bird to user's spotted list
   const handleSpottedListAdd = async () => {
     try {
       const { data } = await updateSpottedList({
@@ -57,13 +62,13 @@ const Card = (props) => {
           imgSrc: imageSrc,
         },
       });
-      setShowModal(true);
       alert(`${props.comName} has been added to your Spotted List!`);
     } catch (error) {
       console.log(error);
     }
   };
 
+  // removes bird from user's watch list
   const handleWatchListRemove = async () => {
     try {
       const { data } = await removeFromWatchList({
@@ -77,6 +82,7 @@ const Card = (props) => {
     }
   };
 
+  // removes bird from user's spotted list
   const handleSpottedListRemove = async () => {
     try {
       const { data } = await removeFromSpottedList({
@@ -90,6 +96,7 @@ const Card = (props) => {
     }
   };
 
+  // deletes bird from user's watch list, adds them to the spotted list
   const moveToSpottedList = async () => {
     try {
       const { data } = await removeFromWatchList({
@@ -104,6 +111,7 @@ const Card = (props) => {
     }
   };
 
+  // conditional rendering depending on what list type is being called from profile page - mostly changes custom buttons depending on the page or list
   if (props.listType === "watch") {
     return (
       <div className="card birdCard" style={{ width: 18 + "rem" }}>
