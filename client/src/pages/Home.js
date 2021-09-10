@@ -347,7 +347,7 @@ const Home = () => {
             <div className="container">
               <select
                 id="state-dropdwn"
-                className="form-select m-2"
+                className="form-select m-1"
                 value={userStateChoice}
                 onChange={handleUserStateChoice}
               >
@@ -360,7 +360,7 @@ const Home = () => {
               </select>
               <select
                 id="county-dropdwn"
-                className="form-select m-2"
+                className="form-select m-1"
                 value={userCountyChoice}
                 onChange={handleUserCountyChoice}
               >
