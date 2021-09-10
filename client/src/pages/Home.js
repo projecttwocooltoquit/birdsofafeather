@@ -320,11 +320,6 @@ const Home = () => {
       <video id="videobg" autoPlay loop muted>
         <source src={forest} type="video/mp4" />
       </video>
-
-      <div className="container">
-      <div className="row">
-        <section className="menuPosition column">
-
       <div className="homebanner">
         <Typewriter
           onInit={(typewriter) => {
@@ -337,51 +332,54 @@ const Home = () => {
           }}
         />
       </div>
-          <h4>Select a state and county to begin.</h4>
-          <p>
-            To add a bird you've seen to your profile, click "Add to Spotted
-            List"
-          </p>
-          <p>
-            If you see a bird you'd like to keep an eye out for, you can add
-            that bird to your Watch List by clicking "Add to Watch List"
-          </p>
-          <div className="container">
-            <select
-              id="state-dropdwn"
-              className="form-select m-2"
-              value={userStateChoice}
-              onChange={handleUserStateChoice}
-            >
-              <option defaultValue={userStateChoice}>Select a state</option>
-              {states.map((state) => (
-                <option key={state.abbreviation} value={state.abbreviation}>
-                  {state.name}
-                </option>
-              ))}
-            </select>
-            <select
-              id="county-dropdwn"
-              className="form-select m-2"
-              value={userCountyChoice}
-              onChange={handleUserCountyChoice}
-            >
-              <option defaultValue={userCountyChoice}>Select a county</option>
-              {counties.map((county) => (
-                <option key={county.code} value={county.code}>
-                  {county.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </section>
-        <section className="mapPosition column">
-          <MapContainer
-            locations={locationBirds}
-            center={locationBirds[1]}
-          ></MapContainer>
-        </section>
-      </div>
+      <div className="container p-5">
+        <div className="row">
+          <section className="menuPosition column">
+            <h4>Select a state and county to begin.</h4>
+            <p>
+              To add a bird you've seen to your profile, click "Add to Spotted
+              List"
+            </p>
+            <p>
+              If you see a bird you'd like to keep an eye out for, you can add
+              that bird to your Watch List by clicking "Add to Watch List"
+            </p>
+            <div className="container">
+              <select
+                id="state-dropdwn"
+                className="form-select m-2"
+                value={userStateChoice}
+                onChange={handleUserStateChoice}
+              >
+                <option defaultValue={userStateChoice}>Select a state</option>
+                {states.map((state) => (
+                  <option key={state.abbreviation} value={state.abbreviation}>
+                    {state.name}
+                  </option>
+                ))}
+              </select>
+              <select
+                id="county-dropdwn"
+                className="form-select m-2"
+                value={userCountyChoice}
+                onChange={handleUserCountyChoice}
+              >
+                <option defaultValue={userCountyChoice}>Select a county</option>
+                {counties.map((county) => (
+                  <option key={county.code} value={county.code}>
+                    {county.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </section>
+          <section className="mapPosition column">
+            <MapContainer
+              locations={locationBirds}
+              center={locationBirds[1]}
+            ></MapContainer>
+          </section>
+        </div>
       </div>
       <br></br>
       <br></br>
