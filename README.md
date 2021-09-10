@@ -20,7 +20,7 @@ A simple web application that allows users to view birds and keep track of birds
 
 This browser application allows a user to discover birds in their area via the power of google maps! Users can input (using drop down menus) their location and view the map displayed on the right to find the beautiful birds they can spot in their area. Should the user chose to create a profile, they can save keep track of the birds they have viewed and note birds that they wish to view. 
 
-Upon accessing the web application, the user is taken to the homescreen. If they are a first time user, they can chose to sign up by clicking on the corresponding Log In button on the nav bar. (Include more as we continue ironing this out)
+Upon accessing the web application, the user is taken to the homescreen. If they are a first time user, they can chose to sign up by clicking on the corresponding Sign Up link on the nav bar. If they are a returning user, then they can click on the Log In link in the nav bar. After logging in, or signing up, users can pick a state and county to find birds in whatever area they chose! (This site includes all 50 states.) When a user finds a bird that they recognize they can click on the "add to spotted list" button. When the user finds a bird that they hope to see, they can click on the "add to watch list" button. Every bird card on the home page will have a spotted and watch list button. Users can survey their choices by perusing the profile page, which can be found by clicking on the profile link in the nav bar. Happy bird watching!  
 
 # Setup/Installation Requirements
 
