@@ -326,7 +326,7 @@ const Home = () => {
         <Typewriter
           onInit={(typewriter) => {
             typewriter
-              .typeString("Birds of a Feather, flock together!")
+              .typeString("Birds of a Feather, Flock Together!")
               .pauseFor(1000)
               .deleteAll()
               .typeString("Welcome!")
