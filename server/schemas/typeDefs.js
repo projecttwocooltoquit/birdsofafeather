@@ -52,6 +52,8 @@ const typeDefs = gql`
       comName: String!
       imgSrc: String!
     ): Profile
+    removeFromWatchList(bird: String!): Profile
+    removeFromSpottedList(bird: String!): Profile
   }
 `;
 

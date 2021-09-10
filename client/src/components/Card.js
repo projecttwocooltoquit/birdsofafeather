@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
-  ADD_BIRD,
   UPDATE_WATCHLIST,
   UPDATE_SPOTTEDLIST,
+  REMOVE_FROM_WATCHLIST,
+  REMOVE_FROM_SPOTTEDLIST,
 } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 
@@ -14,6 +15,8 @@ const Card = (props) => {
 
   const [updateWatchList] = useMutation(UPDATE_WATCHLIST);
   const [updateSpottedList] = useMutation(UPDATE_SPOTTEDLIST);
+  const [removeFromWatchList] = useMutation(REMOVE_FROM_WATCHLIST);
+  const [removeFromSpottedList] = useMutation(REMOVE_FROM_SPOTTEDLIST);
 
   var flickr = new Flickr(process.env.REACT_APP_FLICKR_API_KEY);
   flickr.photos
@@ -61,12 +64,30 @@ const Card = (props) => {
     }
   };
 
-  const handleWatchListRemove = () => {
-    console.log("you want to remove me but you can't, sorry (watchList)");
+  const handleWatchListRemove = async () => {
+    try {
+      const { data } = await removeFromWatchList({
+        variables: {
+          bird: props.sciName,
+        },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleSpottedListRemove = () => {
-    console.log("you want to remove me but you can't, sorry (spottedList)");
+  const handleSpottedListRemove = async () => {
+    try {
+      const { data } = await removeFromSpottedList({
+        variables: {
+          bird: props.sciName,
+        },
+      });
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   if (props.listType === "watch") {

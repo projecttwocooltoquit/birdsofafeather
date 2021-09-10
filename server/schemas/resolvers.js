@@ -108,6 +108,20 @@ const resolvers = {
         "You need to be logged in to edit your lists!"
       );
     },
+    removeFromWatchList: async (parent, { bird }, context) => {
+      return Profile.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { watchList: { sciName: bird } } },
+        { new: true }
+      );
+    },
+    removeFromSpottedList: async (parent, { bird }, context) => {
+      return Profile.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { spottedList: { sciName: bird } } },
+        { new: true }
+      );
+    },
   },
 };
 
